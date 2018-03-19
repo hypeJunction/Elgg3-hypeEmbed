@@ -13,4 +13,5 @@ if ($subtype && !in_array($subtype, $subtypes)) {
 echo elgg_view_entity($entity, [
 	'full_view' => false,
 	'size' => elgg_extract('size', $vars),
+	'metadata' => false,
 ]);

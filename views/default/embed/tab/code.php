@@ -2,12 +2,12 @@
 
 $warning = elgg_echo('embed:code:help');
 echo elgg_format_element('p', [
-        'class' => 'elgg-text-help message is-warning',
+		'class' => 'elgg-text-help message is-warning',
 ], $warning);
 
-echo elgg_view_form('embed/code', array(
+echo elgg_view_form('embed/code', [
 	'class' => 'elgg-form-embed-code',
-		), $vars);
+		], $vars);
 ?>
 
 <script>

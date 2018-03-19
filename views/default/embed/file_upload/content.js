@@ -1,13 +1,14 @@
 define(function (require) {
 
 	var elgg = require('elgg');
+	var $ = require('jquery');
+
 	var embed = require('elgg/embed');
 	var lightbox = require('elgg/lightbox');
 
 	var Ajax = require('elgg/Ajax');
-	var ajax = new Ajax();
 
-	$(document).on('submit', '.elgg-form-embed-buttons', function (e) {
+	$(document).off('submit', '.elgg-form-embed-file-upload').on('submit', '.elgg-form-embed-file-upload', function (e) {
 		e.preventDefault();
 
 		var $elem = $(this);
@@ -18,8 +19,12 @@ define(function (require) {
 		var value = textArea.val();
 		var result = textArea.val();
 
+		var ajax = new Ajax();
 		ajax.action($elem.attr('action'), {
-			data: ajax.objectify($elem)
+			data: ajax.objectify($elem),
+			beforeSend: function() {
+				$elem.find('[type="submit"]').prop('disabled', true);
+			}
 		}).done(function (content) {
 			textArea.focus();
 			if (!elgg.isNullOrUndefined(textArea.prop('selectionStart'))) {
@@ -46,8 +51,10 @@ define(function (require) {
 			}
 
 			lightbox.close();
+		}).fail(function() {
+			lightbox.close();
 		});
 
 	});
-});
 
+});

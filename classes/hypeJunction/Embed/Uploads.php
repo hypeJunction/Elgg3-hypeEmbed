@@ -5,46 +5,13 @@ namespace hypeJunction\Embed;
 class Uploads {
 
 	/**
-	 * Hijack embed file upload
-	 * 
-	 * @param string $hook   "action"
-	 * @param string $type   "file/upload"
-	 * @param bool   $return Proceed with action
-	 * @param array  $params Hook params
-	 * @return bool
-	 */
-	public static function handleUpload($hook, $type, $return, $params) {
-
-		$upload_type = get_input('embed_upload_type');
-
-		if (!isset($upload_type) || $upload_type == 'file') {
-			return;
-		}
-
-		// Create a new file entity and let the file upload action handle the rest
-
-		$guid = get_input('file_guid');
-		if ($guid) {
-			return;
-		}
-
-		$file = new File();
-		$file->container_guid = get_input('container_guid') ?: elgg_get_logged_in_user_guid();
-		if (!$file->save()) {
-			register_error(elgg_echo('file:uploadfailed'));
-			return false;
-		}
-
-		set_input('file_guid', $file->guid);
-	}
-
-	/**
 	 * Set custom icon sizes for file objects
 	 *
 	 * @param string $hook   "entity:icon:url"
 	 * @param string $type   "object"
 	 * @param array  $return Sizes
 	 * @param array  $params Hook params
+	 *
 	 * @return array
 	 */
 	public static function setIconSizes($hook, $type, $return, $params) {
@@ -78,10 +45,11 @@ class Uploads {
 	/**
 	 * Set custom file thumbnail location
 	 *
-	 * @param string     $hook   "entity:icon:file"
-	 * @param string     $type   "object"
-	 * @param \ElggIcon  $icon   Icon file
-	 * @param array      $params Hook params
+	 * @param string    $hook   "entity:icon:file"
+	 * @param string    $type   "object"
+	 * @param \ElggIcon $icon   Icon file
+	 * @param array     $params Hook params
+	 *
 	 * @return \ElggIcon
 	 */
 	public static function setIconFile($hook, $type, $icon, $params) {
@@ -123,6 +91,7 @@ class Uploads {
 			$filename = "file/{$filename_prefix}{$filename}.jpg";
 			$icon->setFilename($filename);
 		}
+
 		return $icon;
 	}
 

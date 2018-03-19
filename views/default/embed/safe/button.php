@@ -1,6 +1,7 @@
 <?php
 
-use hypeJunction\Embed\Shortcodes;
+$svc = elgg()->shortcodes;
+/* @var $svc \hypeJunction\Shortcodes\ShortcodesService */
 
 $text = elgg_extract('text', $vars);
 $type = elgg_extract('type', $vars, 'action');
@@ -14,6 +15,6 @@ $attrs = [
 	'text' => $text,
 ];
 
-$output = Shortcodes::getShortcodeTag('button', $attrs);
+$output = $svc->generate('button', $attrs);
 
 echo elgg_trigger_plugin_hook('prepare:button', 'embed', $vars, $output);

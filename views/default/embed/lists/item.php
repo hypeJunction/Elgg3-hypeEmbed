@@ -22,35 +22,25 @@ if ($entity->hasIcon('small') || $entity instanceof ElggFile) {
 
 $subtitle = elgg_format_element('span', [
 	'class' => 'embed-type-badge elgg-badge mrs',
-		], elgg_echo("item:object:{$entity->getSubtype()}"));
+		], elgg_echo("item:object:{$entity->subtype}"));
 
-$subtitle .= elgg_view('page/elements/by_line', $vars);
-
-$items[] = [
-	'name' => 'embed',
-	'class' => 'embed-insert-async',
-	'text' => elgg_echo('embed:embed'),
-	'href' => 'javascript:',
-	'data-guid' => $entity->guid,
-	'data-view' => 'embed/safe/entity',
-];
+$subtitle .= elgg_view('object/elements/imprint', $vars);
 
 $menu = elgg_view_menu('embed:entity', [
-	'items' => $items,
 	'entity' => $entity,
-	'sort_by' => 'priority',
 	'class' => 'elgg-menu-hz',
 		]);
 
-echo elgg_view('object/elements/summary', array(
+echo elgg_view('object/elements/summary', [
 	'entity' => $entity,
 	'title' => $title,
 	'subtitle' => $subtitle,
-	'content' => elgg_get_excerpt($entity->description) . $menu,
+	'content' => $menu,
 	'metadata' => false,
-	'tags' => $tags,
+	'tags' => false,
 	'icon' => $icon,
-));
+    'class' => 'embed-item-summary',
+]);
 ?>
 <script>
 	require(['embed/lists/item']);

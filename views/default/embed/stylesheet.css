@@ -1,0 +1,51 @@
+.embed-asset-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 10px auto;
+}
+
+.embed-asset-gallery > li {
+	max-width: 300px;
+}
+
+.embed-asset-gallery img {
+	max-width: 100%;
+	max-height: 100px;
+}
+
+.ebmed-code-wrapper > * {
+	max-width: 100%;
+}
+
+.elgg-menu-longtext > li > a {
+	font-size: 12px;
+}
+
+.elgg-field-label + .elgg-field-input .elgg-menu-longtext-container {
+	padding: 0.5rem;
+	margin-top: -2rem;
+}
+
+.elgg-menu-longtext .elgg-menu-item-has-dropdown .elgg-icon {
+	margin-left: 0.25rem;
+	font-size: 10px;
+}
+
+.embed-list-item .elgg-listing-imprint {
+	display: inline-block;
+}
+
+.embed-list-item .elgg-listing-summary-content {
+	margin: 0;
+}
+
+.elgg-menu-embed-entity > li > a {
+	font-size: 0.85rem;
+	font-weight: bold;
+	padding: 0.25rem;
+}
+
+.elgg-module .embed-list > li.embed-list-item {
+	border: 1px solid $(border-color-soft);
+	margin-bottom: 0.5rem;
+}

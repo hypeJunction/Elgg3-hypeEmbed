@@ -23,9 +23,9 @@ $file->access_id = ACCESS_PRIVATE;
 $file->token = $token;
 $file->save();
 
-$output = elgg_view('embed/safe/code', array(
+$output = elgg_view('embed/safe/code', [
 	'user_guid' => $user->guid,
 	'token' => $token,
-));
+]);
 
 return elgg_ok_response($output);

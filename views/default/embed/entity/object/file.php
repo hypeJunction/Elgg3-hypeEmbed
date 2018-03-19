@@ -5,6 +5,16 @@ if (!$entity instanceof ElggFile) {
 	return;
 }
 
+$format = elgg_extract('format', $vars);
+if ($format === 'card') {
+	echo elgg_view_entity($entity, [
+		'full_view' => false,
+		'size' => elgg_extract('size', $vars),
+		'metadata' => false,
+	]);
+	return;
+}
+
 $vars['full_view'] = true;
 
 $mime = $entity->getMimeType();
@@ -18,5 +28,6 @@ if (elgg_view_exists("file/specialcontent/$mime")) {
 	echo elgg_view_entity($entity, [
 		'full_view' => false,
 		'size' => elgg_extract('size', $vars),
+		'metadata' => false,
 	]);
 }

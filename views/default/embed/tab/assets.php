@@ -3,7 +3,7 @@ if (!elgg_is_admin_logged_in()) {
 	return;
 }
 
-$embed_asset_path = elgg_get_config('dataroot') . 'embed/';
+$embed_asset_path = \Elgg\Project\Paths::sanitize(elgg_get_config('dataroot') . 'embed/');
 echo elgg_format_element('div', [
 	'class' => 'elgg-text-help',
 		], elgg_echo('embed:assets:help', [$embed_asset_path]));
@@ -29,10 +29,10 @@ if (empty($images)) {
 				$segments = explode('/', $image);
 				array_shift($segments);
 				$view = implode('/', $segments);
-				echo elgg_format_element('img', array(
+				echo elgg_format_element('img', [
 					'src' => elgg_normalize_url("embed/asset/$view"),
 					'class' => 'embed-insert',
-				));
+				]);
 				?>
 			</div>
 		</li>

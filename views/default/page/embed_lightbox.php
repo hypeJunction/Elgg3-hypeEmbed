@@ -16,10 +16,10 @@ $body .= elgg_view('page/elements/foot');
 
 $head = elgg_view('page/elements/head', $vars['head']);
 
-$params = array(
+$params = [
 	'head' => $head,
 	'body' => $body,
-);
+];
 
 if (isset($vars['body_attrs'])) {
 	$params['body_attrs'] = $vars['body_attrs'];
