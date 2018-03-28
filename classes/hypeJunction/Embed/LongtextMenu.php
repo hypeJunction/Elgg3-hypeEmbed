@@ -35,7 +35,7 @@ class LongtextMenu {
 		$items[] = ElggMenuItem::factory([
 			'name' => 'embed',
 			'href' => 'javascript:',
-			'text' => elgg_echo('embed:media') . elgg_view_icon('caret-down'),
+			'text' => elgg_echo('embed:media'),
 			'priority' => 10,
 			'child_menu' => [
 				'display' => 'dropdown',
