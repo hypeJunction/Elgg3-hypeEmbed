@@ -1,3 +1,13 @@
+<a name="3.0.2"></a>
+## [3.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.1...3.0.2) (2018-03-28)
+
+
+### Bug Fixes
+
+* **ui:** remove redunant caret icon ([d015756](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/d015756))
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.0...3.0.1) (2018-03-27)
 
