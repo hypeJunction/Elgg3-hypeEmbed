@@ -1,3 +1,13 @@
+<a name="3.0.3"></a>
+## [3.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.2...3.0.3) (2018-04-20)
+
+
+### Bug Fixes
+
+* **menus:** do not pass items by reference ([4ddc44c](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/4ddc44c))
+
+
+
 <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.1...3.0.2) (2018-03-28)
 
