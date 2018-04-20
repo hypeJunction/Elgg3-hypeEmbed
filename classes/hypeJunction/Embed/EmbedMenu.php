@@ -58,7 +58,7 @@ class EmbedMenu {
 
 		$page_owner = elgg_get_page_owner_entity();
 
-		foreach ($menu as &$item) {
+		foreach ($menu as $item) {
 			if (!$item instanceof ElggMenuItem) {
 				continue;
 			}
