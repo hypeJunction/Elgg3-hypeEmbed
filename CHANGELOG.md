@@ -1,3 +1,19 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.0...3.1.0) (2018-06-29)
+
+
+### Bug Fixes
+
+* **menus:** do not pass items by reference ([4ddc44c](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/4ddc44c))
+* **ui:** remove redunant caret icon ([d015756](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/d015756))
+
+
+### Features
+
+* **core:** updates and fixes ([5e31189](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/5e31189))
+
+
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.2...3.0.3) (2018-04-20)
 
