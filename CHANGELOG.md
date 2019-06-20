@@ -1,3 +1,13 @@
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.1.0...3.1.1) (2019-06-20)
+
+
+### Bug Fixes
+
+* **menu:** dropdown menu works again ([cfad848](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/commit/cfad848))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeEmbed/compare/3.0.0...3.1.0) (2018-06-29)
 
