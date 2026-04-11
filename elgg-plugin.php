@@ -8,6 +8,7 @@ if (!is_dir($static_asset_path)) {
 }
 
 return [
+	'bootstrap' => \hypeJunction\Embed\Bootstrap::class,
 	'actions' => [
 		'embed/file/upload' => [],
 		'embed/buttons' => [
@@ -69,5 +70,49 @@ return [
 		'default' => [
 			'embed/' => $static_asset_path,
 		],
-	]
+	],
+	'hooks' => [
+		'register' => [
+			'menu:embed' => [
+				\hypeJunction\Embed\EmbedMenu::class => [],
+			],
+			'menu:embed:entity' => [
+				\hypeJunction\Embed\EntityEmbedMenu::class => [],
+			],
+			'menu:longtext' => [
+				\hypeJunction\Embed\LongtextMenu::class => ['priority' => 9999],
+			],
+		],
+		'entity:icon:sizes' => [
+			'object' => [
+				\hypeJunction\Embed\Uploads::class . '::setIconSizes' => [],
+			],
+		],
+		'entity:icon:file' => [
+			'object' => [
+				\hypeJunction\Embed\Uploads::class . '::setIconFile' => [],
+			],
+		],
+		'layout' => [
+			'page' => [
+				\hypeJunction\Embed\Views::class . '::filterLightboxLayout' => [],
+			],
+		],
+		'shell' => [
+			'page' => [
+				\hypeJunction\Embed\Views::class . '::filterLightboxShell' => [],
+			],
+		],
+	],
+	'view_extensions' => [
+		'forms/file/upload' => [
+			'embed/forms/upload' => ['priority' => 100],
+		],
+		'elgg.css' => [
+			'embed/stylesheet.css' => [],
+		],
+		'admin.css' => [
+			'embed/stylesheet.css' => [],
+		],
+	],
 ];
