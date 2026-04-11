@@ -27,6 +27,15 @@ class EmbedMenu {
 			],
 		]);
 
+		$menu[] = ElggMenuItem::factory([
+			'name' => 'player',
+			'text' => elgg_echo('embed:player'),
+			'priority' => 500,
+			'data' => [
+				'view' => 'embed/tab/player',
+			],
+		]);
+
 		if (elgg_is_admin_logged_in()) {
 			$menu[] = ElggMenuItem::factory([
 				'name' => 'assets',
@@ -57,6 +66,7 @@ class EmbedMenu {
 		}
 
 		$page_owner = elgg_get_page_owner_entity();
+		$id = $hook->getParam('textarea_id');
 
 		foreach ($menu as $item) {
 			if (!$item instanceof ElggMenuItem) {
@@ -69,11 +79,21 @@ class EmbedMenu {
 				$item->setData('view', 'embed/tab/file');
 			}
 
-			$href = elgg_http_add_url_query_elements($item->getHref(), [
-				'container_guid' => $page_owner->guid,
-			]);
+			$url = "embed/{$item->getName()}";
 
-			$item->setHref($href);
+			if ($page_owner instanceof \ElggGroup && $page_owner->isMember()) {
+				$url = elgg_http_add_url_query_elements($url, [
+					'container_guid' => $page_owner->guid,
+				]);
+			}
+
+			$item->setHref('javascript:');
+			$item->{'data-href'} = elgg_normalize_url($url);
+
+			if ($id) {
+				$item->rel = "embed-lightbox-{$id}";
+				$item->setLinkClass("embed-control embed-control-{$id}");
+			}
 		}
 
 		return $menu;

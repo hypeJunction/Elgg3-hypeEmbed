@@ -14,9 +14,9 @@ class Uploads {
 	 *
 	 * @return array
 	 */
-	public static function setIconSizes($hook, $type, $return, $params) {
+	public static function setIconSizes(\Elgg\Hook $hook) {
 
-		$entity_subtype = elgg_extract('entity_subtype', $params);
+		$entity_subtype = $hook->getParam('entity_subtype');
 		if ($entity_subtype !== 'embed_file') {
 			return;
 		}
@@ -52,10 +52,10 @@ class Uploads {
 	 *
 	 * @return \ElggIcon
 	 */
-	public static function setIconFile($hook, $type, $icon, $params) {
+	public static function setIconFile(\Elgg\Hook $hook) {
 
-		$entity = elgg_extract('entity', $params);
-		$size = elgg_extract('size', $params, 'large');
+		$entity = $hook->getParam('entity');
+		$size = $hook->getParam('size', 'large');
 
 		if (!elgg_instanceof($entity, 'object', 'embed_file')) {
 			return;
@@ -83,16 +83,16 @@ class Uploads {
 				break;
 		}
 
-		$icon->owner_guid = $entity->owner_guid;
+		$hook->getValue()->owner_guid = $entity->owner_guid;
 		if (isset($entity->$metadata_name)) {
-			$icon->setFilename($entity->$metadata_name);
+			$hook->getValue()->setFilename($entity->$metadata_name);
 		} else {
 			$filename = pathinfo($entity->getFilenameOnFilestore(), PATHINFO_FILENAME);
 			$filename = "file/{$filename_prefix}{$filename}.jpg";
-			$icon->setFilename($filename);
+			$hook->getValue()->setFilename($filename);
 		}
 
-		return $icon;
+		return $hook->getValue();
 	}
 
 }

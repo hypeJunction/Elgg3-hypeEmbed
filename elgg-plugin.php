@@ -45,6 +45,13 @@ return [
 			'path' => 'posts/embed/{guid}',
 			'resource' => 'collection/group'
 		],
+		'embed:tab' => [
+			'path' => '/embed/{tab}',
+			'resource' => 'embed/tab',
+			'requirements' => [
+				'tab' => '(?!asset)[a-zA-Z_]+',
+			],
+		],
 		'ckeditor:image' => [
 			'path' => '/ckeditor/image/{hash}',
 			'resource' => 'embed/ckeditor/image',
@@ -80,9 +87,8 @@ return [
 			'menu:embed:entity' => [
 				\hypeJunction\Embed\EntityEmbedMenu::class => [],
 			],
-			'menu:longtext' => [
-				\hypeJunction\Embed\LongtextMenu::class => ['priority' => 9999],
-			],
+			// Toolbar extends input/longtext directly, replacing the longtext menu approach
+			// LongtextMenu class retained for backward compatibility if needed
 		],
 		'entity:icon:sizes' => [
 			'object' => [

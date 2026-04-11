@@ -45,7 +45,14 @@ define(function (require) {
 				textArea.val(result);
 			}
 
-			lightbox.close();
+			// Close toolbar popup or lightbox depending on context
+			if ($elem.closest('.embed-toolbar-popup').length) {
+				require(['elgg/popup'], function (popup) {
+					popup.close();
+				});
+			} else {
+				lightbox.close();
+			}
 		});
 
 	});

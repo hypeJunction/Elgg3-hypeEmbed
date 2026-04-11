@@ -23,7 +23,7 @@ if (!$selected) {
 }
 
 if (!$selected) {
-	throw new \Elgg\PageNotFoundException();
+	throw new \Elgg\Exceptions\Http\PageNotFoundException();
 }
 
 if ($selected->getData('view')) {

@@ -5,6 +5,8 @@ return [
 	'embed:title' => 'Embed: %s',
 
 	'embed:posts' => 'Content Items',
+	'embed:player' => 'Player',
+	'embed:player:address' => 'URL address of the content',
 	'embed:assets' => 'Static Assets',
 	'embed:buttons' => 'Buttons',
 

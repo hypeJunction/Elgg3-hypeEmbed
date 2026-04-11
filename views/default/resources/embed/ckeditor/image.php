@@ -3,7 +3,7 @@
 $hash = elgg_extract('hash', $vars);
 
 if (!$hash) {
-	throw new \Elgg\PageNotFoundException();
+	throw new \Elgg\Exceptions\Http\PageNotFoundException();
 }
 
 $files = elgg_get_entities([
@@ -16,7 +16,7 @@ $files = elgg_get_entities([
 ]);
 
 if (!$files) {
-	throw new \Elgg\PageNotFoundException();
+	throw new \Elgg\Exceptions\Http\PageNotFoundException();
 }
 
 $file = array_shift($files);

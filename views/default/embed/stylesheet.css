@@ -44,3 +44,99 @@
 	border: 1px solid $(border-color-soft);
 	margin-bottom: 0.5rem;
 }
+
+/* Embed toolbar below longtext inputs */
+.embed-toolbar {
+	border: 1px solid #dcdcdc;
+	margin-top: -2px;
+	border-radius: 0 0 3px 3px;
+	display: flex;
+}
+
+.embed-toolbar .elgg-menu-embed {
+	display: flex;
+	flex-direction: row;
+}
+
+.embed-toolbar .elgg-menu-embed > li > a {
+	padding: 4px 8px;
+	display: inline-block;
+	color: inherit;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.embed-toolbar .elgg-menu-embed > li:hover > a,
+.embed-toolbar .elgg-menu-embed > li.elgg-state-active > a {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+/* Hide the default longtext menu - toolbar replaces it */
+.elgg-menu-longtext {
+	display: none;
+}
+
+.embed-toolbar .elgg-menu-longtext {
+	display: flex;
+	margin-left: auto;
+	float: none;
+	font-size: inherit;
+}
+
+.embed-toolbar-popup {
+	position: absolute;
+	z-index: 1201;
+	max-width: 800px;
+	width: calc(100vw - 2rem);
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+}
+
+.embed-toolbar-popup:empty {
+	visibility: hidden;
+}
+
+.embed-toolbar-popup.elgg-ajax-loader {
+	min-height: 10rem;
+}
+
+.embed-wrapper {
+	font-size: 12px;
+	width: 100%;
+}
+
+.embed-wrapper * {
+	font-size: inherit;
+}
+
+.embed-wrapper > .elgg-form {
+	padding: 8px;
+}
+
+.elgg-list.embed-list {
+	border-top: 1px solid #eee;
+}
+
+.elgg-list.embed-list > li {
+	border-bottom: 1px solid #eee;
+	padding: 0;
+}
+
+.elgg-list.embed-list > li:nth-child(even) {
+	background: #fafafa;
+}
+
+.elgg-list.embed-list > li:hover {
+	background: #f4f4f4;
+}
+
+.elgg-module-embed .elgg-head {
+	padding: 8px;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.elgg-module-embed .elgg-body {
+	padding: 8px;
+}
