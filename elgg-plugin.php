@@ -11,6 +11,7 @@ return [
 	'bootstrap' => \hypeJunction\Embed\Bootstrap::class,
 	'actions' => [
 		'embed/file/upload' => [],
+		'embed/player' => [],
 		'embed/buttons' => [
 			'access' => 'admin',
 		],
@@ -105,6 +106,9 @@ return [
 		],
 	],
 	'view_extensions' => [
+		'input/longtext' => [
+			'embed/toolbar' => [],
+		],
 		'forms/file/upload' => [
 			'embed/forms/upload' => ['priority' => 100],
 		],
