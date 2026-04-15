@@ -57,7 +57,7 @@ class Uploads {
 		$entity = $hook->getParam('entity');
 		$size = $hook->getParam('size', 'large');
 
-		if (!elgg_instanceof($entity, 'object', 'embed_file')) {
+		if (!($entity instanceof \ElggObject) || $entity->getSubtype() !== 'embed_file') {
 			return;
 		}
 

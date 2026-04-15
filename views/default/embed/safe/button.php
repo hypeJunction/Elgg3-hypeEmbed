@@ -1,5 +1,9 @@
 <?php
 
+if (!elgg()->has('shortcodes')) {
+	return;
+}
+
 $svc = elgg()->shortcodes;
 /* @var $svc \hypeJunction\Shortcodes\ShortcodesService */
 

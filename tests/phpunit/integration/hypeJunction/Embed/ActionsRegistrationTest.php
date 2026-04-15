@@ -17,33 +17,33 @@ class ActionsRegistrationTest extends IntegrationTestCase {
      * @return void
      */
     public function testFileUploadActionRegistered(): void {
-        $action = _elgg_services()->actions->getAction('embed/file/upload');
-        $this->assertNotNull($action);
+        $this->assertTrue(elgg_action_exists('embed/file/upload'));
     }
 
     /**
      * @return void
      */
     public function testPlayerActionRegistered(): void {
-        $action = _elgg_services()->actions->getAction('embed/player');
-        $this->assertNotNull($action);
+        $this->assertTrue(elgg_action_exists('embed/player'));
     }
 
     /**
      * @return void
      */
     public function testButtonsActionRequiresAdmin(): void {
-        $action = _elgg_services()->actions->getAction('embed/buttons');
-        $this->assertNotNull($action);
-        $this->assertEquals('admin', $action->access);
+        $this->assertTrue(elgg_action_exists('embed/buttons'));
+        $actions = _elgg_services()->actions->getAllActions();
+        $this->assertArrayHasKey('embed/buttons', $actions);
+        $this->assertEquals('admin', $actions['embed/buttons']['access']);
     }
 
     /**
      * @return void
      */
     public function testCodeActionRequiresAdmin(): void {
-        $action = _elgg_services()->actions->getAction('embed/code');
-        $this->assertNotNull($action);
-        $this->assertEquals('admin', $action->access);
+        $this->assertTrue(elgg_action_exists('embed/code'));
+        $actions = _elgg_services()->actions->getAllActions();
+        $this->assertArrayHasKey('embed/code', $actions);
+        $this->assertEquals('admin', $actions['embed/code']['access']);
     }
 }

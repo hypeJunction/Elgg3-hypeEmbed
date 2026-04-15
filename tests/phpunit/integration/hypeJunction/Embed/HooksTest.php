@@ -131,17 +131,17 @@ class HooksTest extends IntegrationTestCase {
      * @return void
      */
     public function testLightboxLayoutFilterReturnsEmbedWhenParamSet(): void {
-        $_REQUEST['embed_lightbox'] = '1';
+        set_input('embed_lightbox', '1');
         $result = Views::filterLightboxLayout();
         $this->assertEquals('embed_lightbox', $result);
-        unset($_REQUEST['embed_lightbox']);
+        set_input('embed_lightbox', '');
     }
 
     /**
      * @return void
      */
     public function testLightboxLayoutFilterReturnsNullWhenParamAbsent(): void {
-        unset($_REQUEST['embed_lightbox']);
+        set_input('embed_lightbox', '');
         $result = Views::filterLightboxLayout();
         $this->assertNull($result);
     }
@@ -150,9 +150,9 @@ class HooksTest extends IntegrationTestCase {
      * @return void
      */
     public function testLightboxShellFilterReturnsEmbedWhenParamSet(): void {
-        $_REQUEST['embed_lightbox'] = '1';
+        set_input('embed_lightbox', '1');
         $result = Views::filterLightboxShell();
         $this->assertEquals('embed_lightbox', $result);
-        unset($_REQUEST['embed_lightbox']);
+        set_input('embed_lightbox', '');
     }
 }

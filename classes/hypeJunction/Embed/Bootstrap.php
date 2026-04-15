@@ -19,8 +19,10 @@ class Bootstrap extends DefaultPluginBootstrap {
 
 		\elgg_register_ajax_view('embed/safe/entity');
 
-		\elgg_register_collection('collection:object:file:embed', FileCollection::class);
-		\elgg_register_collection('collection:object:all:embed', PostCollection::class);
+		if (function_exists('elgg_register_collection')) {
+			\elgg_register_collection('collection:object:file:embed', FileCollection::class);
+			\elgg_register_collection('collection:object:all:embed', PostCollection::class);
+		}
 
 		if (\elgg()->has('shortcodes')) {
 			$svc = \elgg()->shortcodes;

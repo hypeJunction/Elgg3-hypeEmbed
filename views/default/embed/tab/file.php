@@ -1,5 +1,9 @@
 <?php
 
+if (!function_exists('elgg_get_collection')) {
+	return;
+}
+
 $page_owner = elgg_get_page_owner_entity();
 if (!$page_owner) {
 	$page_owner = elgg_get_logged_in_user_entity();
