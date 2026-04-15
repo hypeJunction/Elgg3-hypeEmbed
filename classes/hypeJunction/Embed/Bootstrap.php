@@ -6,6 +6,14 @@ use Elgg\DefaultPluginBootstrap;
 
 class Bootstrap extends DefaultPluginBootstrap {
 
+	public function boot() {
+		$dataroot = elgg()->config->dataroot;
+		$staticPath = \Elgg\Project\Paths::sanitize($dataroot . 'embed/');
+		if (!is_dir($staticPath)) {
+			mkdir($staticPath, 0700, true);
+		}
+	}
+
 	public function init() {
 		\elgg_unregister_plugin_hook_handler('register', 'menu:longtext', 'embed_longtext_menu');
 

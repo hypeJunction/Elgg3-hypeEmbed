@@ -1,12 +1,5 @@
 <?php
 
-$dataroot = elgg_get_config('dataroot');
-$static_asset_path = \Elgg\Project\Paths::sanitize($dataroot . 'embed/');
-
-if (!is_dir($static_asset_path)) {
-	mkdir($static_asset_path, 0700, true);
-}
-
 return [
 	'bootstrap' => \hypeJunction\Embed\Bootstrap::class,
 	'actions' => [
@@ -76,7 +69,7 @@ return [
 	],
 	'views' => [
 		'default' => [
-			'embed/' => $static_asset_path,
+			'embed/' => \Elgg\Project\Paths::sanitize(elgg_get_config('dataroot') . 'embed/'),
 		],
 	],
 	'hooks' => [
