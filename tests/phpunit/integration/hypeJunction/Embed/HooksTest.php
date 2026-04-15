@@ -13,6 +13,9 @@ class HooksTest extends IntegrationTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testEmbedMenuRegistersBasicItems(): void {
         $result = elgg_trigger_plugin_hook('register', 'menu:embed', [
             'textarea_id' => 'test_ta',
@@ -24,6 +27,9 @@ class HooksTest extends IntegrationTestCase {
         $this->assertContains('player', $names);
     }
 
+    /**
+     * @return void
+     */
     public function testEmbedMenuIncludesAdminItemsForAdmin(): void {
         $admin = $this->createUser();
         $admin->makeAdmin();
@@ -44,6 +50,9 @@ class HooksTest extends IntegrationTestCase {
         elgg_get_session()->removeLoggedInUser();
     }
 
+    /**
+     * @return void
+     */
     public function testEmbedMenuExcludesAdminItemsForRegularUser(): void {
         $user = $this->createUser();
         elgg_get_session()->setLoggedInUser($user);
@@ -63,6 +72,9 @@ class HooksTest extends IntegrationTestCase {
         elgg_get_session()->removeLoggedInUser();
     }
 
+    /**
+     * @return void
+     */
     public function testEntityEmbedMenuReturnsCardItem(): void {
         $user = $this->createUser();
         $file = new File();
@@ -85,6 +97,9 @@ class HooksTest extends IntegrationTestCase {
         $file->delete();
     }
 
+    /**
+     * @return void
+     */
     public function testUploadsSetIconSizesForEmbedFile(): void {
         $result = elgg_trigger_plugin_hook('entity:icon:sizes', 'object', [
             'entity_subtype' => 'embed_file',
@@ -100,6 +115,9 @@ class HooksTest extends IntegrationTestCase {
         $this->assertEquals(600, $result['large']['w']);
     }
 
+    /**
+     * @return void
+     */
     public function testUploadsSetIconSizesIgnoresOtherSubtypes(): void {
         $default = ['foo' => ['w' => 1, 'h' => 1]];
         $result = elgg_trigger_plugin_hook('entity:icon:sizes', 'object', [
@@ -109,6 +127,9 @@ class HooksTest extends IntegrationTestCase {
         $this->assertEquals($default, $result);
     }
 
+    /**
+     * @return void
+     */
     public function testLightboxLayoutFilterReturnsEmbedWhenParamSet(): void {
         $_REQUEST['embed_lightbox'] = '1';
         $result = Views::filterLightboxLayout();
@@ -116,12 +137,18 @@ class HooksTest extends IntegrationTestCase {
         unset($_REQUEST['embed_lightbox']);
     }
 
+    /**
+     * @return void
+     */
     public function testLightboxLayoutFilterReturnsNullWhenParamAbsent(): void {
         unset($_REQUEST['embed_lightbox']);
         $result = Views::filterLightboxLayout();
         $this->assertNull($result);
     }
 
+    /**
+     * @return void
+     */
     public function testLightboxShellFilterReturnsEmbedWhenParamSet(): void {
         $_REQUEST['embed_lightbox'] = '1';
         $result = Views::filterLightboxShell();

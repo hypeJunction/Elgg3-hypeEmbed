@@ -13,6 +13,9 @@ class EntityCrudTest extends IntegrationTestCase {
 
     public function down() {}
 
+    /**
+     * @return void
+     */
     public function testEmbedFileCanBeSavedAndLoaded(): void {
         $user = $this->createUser();
         $file = new File();
@@ -31,6 +34,9 @@ class EntityCrudTest extends IntegrationTestCase {
         $file->delete();
     }
 
+    /**
+     * @return void
+     */
     public function testEmbedCodeCanBeSavedWithToken(): void {
         $user = $this->createUser();
         $code = new EmbedCode();
@@ -51,6 +57,9 @@ class EntityCrudTest extends IntegrationTestCase {
         $code->delete();
     }
 
+    /**
+     * @return void
+     */
     public function testEmbedFileOwnerCanEdit(): void {
         $owner = $this->createUser();
         $other = $this->createUser();
@@ -67,6 +76,9 @@ class EntityCrudTest extends IntegrationTestCase {
         $file->delete();
     }
 
+    /**
+     * @return void
+     */
     public function testEmbedFileCanBeDeleted(): void {
         $user = $this->createUser();
         $file = new File();

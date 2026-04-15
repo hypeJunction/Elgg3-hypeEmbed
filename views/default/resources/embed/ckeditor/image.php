@@ -21,4 +21,4 @@ if (!$files) {
 
 $file = array_shift($files);
 
-forward(elgg_get_embed_url($file, 'large'));
+return elgg_redirect_response(elgg_get_embed_url($file, 'large'));
