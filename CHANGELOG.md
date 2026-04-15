@@ -1,3 +1,19 @@
+<a name="4.0.0"></a>
+# [4.0.0] (2026-04-15)
+
+### Breaking Changes
+
+* Requires Elgg 4.0+, PHP 7.4+
+* `manifest.xml` removed — plugin metadata now fully in `elgg-plugin.php`
+* `forward()` replaced with `elgg_redirect_response()` in resource views
+* `elgg_instanceof()` removed — replaced with `instanceof` + `getSubtype()`
+
+### Migration
+
+* `composer.json` updated: `elgg/elgg ^4.0`, `composer/installers ^2.0`, PSR-4 autoload
+* Side-effect code (dataroot mkdir) moved from `elgg-plugin.php` top-level into `Bootstrap::boot()`
+* Optional dependency guards added for `hypeShortcode` and `hypeLists` APIs
+
 <a name="3.1.2"></a>
 ## [3.1.2](https://github.com/hypeJunction/Elgg3-hypeEmbed/compare/3.1.1...3.1.2) (2019-06-20)
 
