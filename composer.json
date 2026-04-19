@@ -4,7 +4,12 @@
 	"description": "Embed for Elgg",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
-		"elgg", "plugin", "embed", "link", "images", "shortcode"
+		"elgg",
+		"plugin",
+		"embed",
+		"link",
+		"images",
+		"shortcode"
 	],
 	"license": "GPL-2.0-or-later",
 	"authors": [
@@ -26,6 +31,11 @@
 	"config": {
 		"allow-plugins": {
 			"composer/installers": true
+		}
+	},
+	"extra": {
+		"elgg-plugin": {
+			"id": "hypeembed"
 		}
 	}
 }
