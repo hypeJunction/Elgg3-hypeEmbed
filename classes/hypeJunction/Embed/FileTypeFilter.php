@@ -6,8 +6,10 @@ use Elgg\Database\Clauses\WhereClause;
 use Elgg\Database\QueryBuilder;
 use hypeJunction\Lists\FilterInterface;
 
+/**
+ * Filters embed files by MIME type.
+ */
 class FileTypeFilter implements FilterInterface {
-
 
 	/**
 	 * Returns ID of the filter

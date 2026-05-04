@@ -2,7 +2,7 @@
 
 echo elgg_view_form('embed/buttons', [
 	'class' => 'elgg-form-embed-buttons',
-		], $vars);
+], $vars);
 ?>
 <script>
 	require(['embed/tab/buttons']);

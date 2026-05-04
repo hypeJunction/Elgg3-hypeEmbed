@@ -3,19 +3,22 @@
 
 namespace hypeJunction\Embed;
 
-use Elgg\Hook;
+use Elgg\Event;
 use ElggMenuItem;
 
+/**
+ * Adds the embed menu item to the longtext toolbar menu.
+ */
 class LongtextMenu {
 
 	/**
 	 * Add the embed menu item to the long text menu
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $hook Event
 	 *
 	 * @return ElggMenuItem[]|null
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $hook) {
 
 		if (!elgg_is_logged_in()) {
 			return null;
@@ -80,5 +83,4 @@ class LongtextMenu {
 
 		return $items;
 	}
-
 }

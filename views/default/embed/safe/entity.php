@@ -12,9 +12,9 @@ if (!elgg_instanceof($entity)) {
 $format = elgg_extract('format', $vars, 'card');
 
 switch ($format) {
-	default :
-	case 'card' :
-	case 'player' :
+	default:
+	case 'card':
+	case 'player':
 		$attrs = [
 			'title' => elgg_get_excerpt($entity->getDisplayName()),
 			'url' => $entity->getURL(),
@@ -28,7 +28,7 @@ switch ($format) {
 		], $output);
 		break;
 
-	case 'icon' :
+	case 'icon':
 		$output = elgg_view('output/img', [
 			'src' => elgg_get_embed_url($entity, 'master'),
 			'alt' => $entity->getDisplayName(),
@@ -39,7 +39,7 @@ switch ($format) {
 		]);
 		break;
 
-	case 'thumbnail' :
+	case 'thumbnail':
 		$output = elgg_view('output/img', [
 			'src' => elgg_get_embed_url($entity, 'small'),
 			'alt' => $entity->getDisplayName(),
@@ -49,7 +49,6 @@ switch ($format) {
 			'text' => $output,
 		]);
 		break;
-
 }
 
 echo elgg_trigger_plugin_hook('prepare:entity', 'embed', $vars, $output);

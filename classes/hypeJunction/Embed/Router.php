@@ -2,6 +2,9 @@
 
 namespace hypeJunction\Embed;
 
+/**
+ * Handles public page route registration for walled garden.
+ */
 class Router {
 
 	/**

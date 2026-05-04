@@ -4,8 +4,16 @@ namespace hypeJunction\Embed;
 
 use Elgg\DefaultPluginBootstrap;
 
+/**
+ * Plugin bootstrap for hypeEmbed.
+ */
 class Bootstrap extends DefaultPluginBootstrap {
 
+	/**
+	 * Ensure the embed data directory exists.
+	 *
+	 * @return void
+	 */
 	public function boot() {
 		$dataroot = elgg()->config->dataroot;
 		$staticPath = \Elgg\Project\Paths::sanitize($dataroot . 'embed/');
@@ -14,6 +22,11 @@ class Bootstrap extends DefaultPluginBootstrap {
 		}
 	}
 
+	/**
+	 * Register plugin services and views.
+	 *
+	 * @return void
+	 */
 	public function init() {
 		\elgg_unregister_event_handler('register', 'menu:longtext', 'embed_longtext_menu');
 

@@ -5,6 +5,9 @@ namespace hypeJunction\Embed;
 use Elgg\Event;
 use ElggMenuItem;
 
+/**
+ * Builds the embed toolbar menu items.
+ */
 class EmbedMenu {
 
 	/**
@@ -98,5 +101,4 @@ class EmbedMenu {
 
 		return $menu;
 	}
-
 }

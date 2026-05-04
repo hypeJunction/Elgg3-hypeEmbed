@@ -106,6 +106,6 @@ class EntityCrudTest extends IntegrationTestCase {
         $this->assertTrue($file->delete());
         _elgg_services()->session_manager->removeLoggedInUser();
 
-        $this->assertFalse(get_entity($guid));
+        $this->assertEmpty(get_entity($guid));
     }
 }

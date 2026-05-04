@@ -22,14 +22,14 @@ if ($entity->hasIcon('small') || $entity instanceof ElggFile) {
 
 $subtitle = elgg_format_element('span', [
 	'class' => 'embed-type-badge elgg-badge mrs',
-		], elgg_echo("item:object:{$entity->subtype}"));
+], elgg_echo("item:object:{$entity->subtype}"));
 
 $subtitle .= elgg_view('object/elements/imprint', $vars);
 
 $menu = elgg_view_menu('embed:entity', [
 	'entity' => $entity,
 	'class' => 'elgg-menu-hz',
-		]);
+]);
 
 echo elgg_view('object/elements/summary', [
 	'entity' => $entity,
@@ -39,7 +39,7 @@ echo elgg_view('object/elements/summary', [
 	'metadata' => false,
 	'tags' => false,
 	'icon' => $icon,
-    'class' => 'embed-item-summary',
+	'class' => 'embed-item-summary',
 ]);
 ?>
 <script>

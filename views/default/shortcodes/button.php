@@ -12,11 +12,11 @@ if ($type) {
 
 $target = elgg_extract('target', $vars);
 switch ($target) {
-	case 'blank' :
+	case 'blank':
 		$params['target'] = '_blank';
 		break;
 
-	case 'lightbox' :
+	case 'lightbox':
 		$params['class'][] = 'elgg-lightbox';
 		$params['class'][] = 'elgg-lightbox-iframe';
 		$params['data-colorbox-opts'] = json_encode([

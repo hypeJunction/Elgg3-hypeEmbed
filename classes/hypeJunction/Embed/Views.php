@@ -8,7 +8,9 @@
 
 namespace hypeJunction\Embed;
 
-
+/**
+ * View filter handlers for the embed lightbox layout.
+ */
 class Views {
 
 	/**

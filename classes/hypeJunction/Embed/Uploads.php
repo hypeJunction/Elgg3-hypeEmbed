@@ -2,17 +2,17 @@
 
 namespace hypeJunction\Embed;
 
+/**
+ * Event handlers for embed file icon management.
+ */
 class Uploads {
 
 	/**
-	 * Set custom icon sizes for file objects
+	 * Set custom icon sizes for embed_file objects.
 	 *
-	 * @param string $hook   "entity:icon:url"
-	 * @param string $type   "object"
-	 * @param array  $return Sizes
-	 * @param array  $params Hook params
+	 * @param \Elgg\Event $hook Event
 	 *
-	 * @return array
+	 * @return array|null
 	 */
 	public static function setIconSizes(\Elgg\Event $hook) {
 
@@ -43,14 +43,11 @@ class Uploads {
 	}
 
 	/**
-	 * Set custom file thumbnail location
+	 * Set custom file thumbnail location for embed_file objects.
 	 *
-	 * @param string    $hook   "entity:icon:file"
-	 * @param string    $type   "object"
-	 * @param \ElggIcon $icon   Icon file
-	 * @param array     $params Hook params
+	 * @param \Elgg\Event $hook Event
 	 *
-	 * @return \ElggIcon
+	 * @return \ElggIcon|null
 	 */
 	public static function setIconFile(\Elgg\Event $hook) {
 
@@ -62,22 +59,22 @@ class Uploads {
 		}
 
 		switch ($size) {
-			case 'small' :
+			case 'small':
 				$filename_prefix = 'thumb';
 				$metadata_name = 'thumbnail';
 				break;
 
-			case 'medium' :
+			case 'medium':
 				$filename_prefix = 'smallthumb';
 				$metadata_name = 'smallthumb';
 				break;
 
-			case 'large' :
+			case 'large':
 				$filename_prefix = 'largethumb';
 				$metadata_name = 'largethumb';
 				break;
 
-			default :
+			default:
 				$filename_prefix = "{$size}thumb";
 				$metadata_name = $filename_prefix;
 				break;
@@ -94,5 +91,4 @@ class Uploads {
 
 		return $hook->getValue();
 	}
-
 }

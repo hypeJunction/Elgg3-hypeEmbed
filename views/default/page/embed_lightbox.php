@@ -2,15 +2,7 @@
 
 $content = elgg_view('page/elements/body', $vars);
 
-$body = <<<__BODY
-<div class="elgg-page elgg-page-lightbox">
-	<div class="elgg-page-body">
-		<div class="elgg-inner">
-			$content
-		</div>
-	</div>
-</div>
-__BODY;
+$body = "<div class=\"elgg-page elgg-page-lightbox\"><div class=\"elgg-page-body\"><div class=\"elgg-inner\">$content</div></div></div>";
 
 $body .= elgg_view('page/elements/foot');
 
@@ -25,4 +17,4 @@ if (isset($vars['body_attrs'])) {
 	$params['body_attrs'] = $vars['body_attrs'];
 }
 
-echo elgg_view("page/elements/html", $params);
+echo elgg_view('page/elements/html', $params);

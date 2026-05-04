@@ -6,12 +6,12 @@ if (!elgg_is_admin_logged_in()) {
 $embed_asset_path = \Elgg\Project\Paths::sanitize(elgg_get_config('dataroot') . 'embed/');
 echo elgg_format_element('div', [
 	'class' => 'elgg-text-help',
-		], elgg_echo('embed:assets:help', [$embed_asset_path]));
+], elgg_echo('embed:assets:help', [$embed_asset_path]));
 
 $views = elgg_list_views();
 $images = array_filter($views, function($view) {
 	$extension = pathinfo($view, PATHINFO_EXTENSION);
-	return 0 === strpos($view, 'embed/') && in_array($extension, ['jpg', 'gif', 'png', 'svg']);
+	return strpos($view, 'embed/') === 0 && in_array($extension, ['jpg', 'gif', 'png', 'svg']);
 });
 
 if (empty($images)) {

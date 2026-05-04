@@ -2,6 +2,9 @@
 
 namespace hypeJunction\Embed;
 
+/**
+ * Represents an embed file object entity.
+ */
 class File extends \ElggFile {
 
 	const SUBTYPE = 'embed_file';

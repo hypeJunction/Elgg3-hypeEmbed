@@ -4,6 +4,9 @@ namespace hypeJunction\Embed;
 
 use Elgg\Event;
 
+/**
+ * Builds the embed menu items for a specific entity.
+ */
 class EntityEmbedMenu {
 
 	/**

@@ -22,7 +22,7 @@ $views = [
 	"embed/entity/$type/$subtype",
 	"embed/entity/$type/default",
 	"embed/entity/$type",
-	"embed/entity/default",
+	'embed/entity/default',
 ];
 
 $params = $vars;

@@ -57,4 +57,3 @@ define(function (require) {
 
 	});
 });
-

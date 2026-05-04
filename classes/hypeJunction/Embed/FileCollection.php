@@ -9,6 +9,9 @@ use hypeJunction\Lists\Collection;
 use hypeJunction\Lists\Sorters\Alpha;
 use hypeJunction\Lists\Sorters\TimeCreated;
 
+/**
+ * Collection of embed files.
+ */
 class FileCollection extends Collection {
 
 	/**
@@ -16,7 +19,7 @@ class FileCollection extends Collection {
 	 * @return string
 	 */
 	public function getId() {
-		return "collection:object:file:embed";
+		return 'collection:object:file:embed';
 	}
 
 	/**
@@ -24,7 +27,7 @@ class FileCollection extends Collection {
 	 * @return string
 	 */
 	public function getDisplayName() {
-		return elgg_echo("collection:object:file");
+		return elgg_echo('collection:object:file');
 	}
 
 	/**

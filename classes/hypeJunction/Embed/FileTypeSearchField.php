@@ -6,6 +6,9 @@ use Elgg\Database\Clauses\GroupByClause;
 use Elgg\Database\QueryBuilder;
 use hypeJunction\Lists\SearchFields\SearchField;
 
+/**
+ * Search field for filtering by file type.
+ */
 class FileTypeSearchField extends SearchField {
 
 	/**
@@ -26,7 +29,7 @@ class FileTypeSearchField extends SearchField {
 			'types' => 'object',
 			'subtypes' => ['file', 'embed_file'],
 			'metadata_names' => 'simpletype',
-			'group_by' => ["n_table.value"],
+			'group_by' => ['n_table.value'],
 			'wheres' => function(QueryBuilder $qb) {
 				return $qb->compare('n_table.value', '!=', '', ELGG_VALUE_STRING);
 			},

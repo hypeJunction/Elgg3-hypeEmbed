@@ -11,6 +11,9 @@ use hypeJunction\Lists\SearchFields\Subtype;
 use hypeJunction\Lists\Sorters\Alpha;
 use hypeJunction\Lists\Sorters\TimeCreated;
 
+/**
+ * Collection of embedded posts.
+ */
 class PostCollection extends Collection {
 
 	/**
@@ -18,7 +21,7 @@ class PostCollection extends Collection {
 	 * @return string
 	 */
 	public function getId() {
-		return "collection:object:all:embed";
+		return 'collection:object:all:embed';
 	}
 
 	/**
@@ -26,7 +29,7 @@ class PostCollection extends Collection {
 	 * @return string
 	 */
 	public function getDisplayName() {
-		return elgg_echo("collection:object:all:embed");
+		return elgg_echo('collection:object:all:embed');
 	}
 
 	/**

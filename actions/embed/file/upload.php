@@ -13,7 +13,7 @@ $access_id = (int) get_input('access_id');
 $container_guid = (int) get_input('container_guid', 0);
 $tags = get_input('tags');
 
-$container_guid = $container_guid ? : elgg_get_logged_in_user_guid();
+$container_guid = $container_guid ?: elgg_get_logged_in_user_guid();
 
 // check if upload attempted and failed
 $uploaded_file = elgg_get_uploaded_file('upload', false);
@@ -28,6 +28,7 @@ $file = new $class();
 if ($title) {
 	$file->title = $title;
 }
+
 $file->description = $desc;
 $file->access_id = $access_id;
 $file->container_guid = $container_guid;

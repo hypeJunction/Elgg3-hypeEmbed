@@ -3,7 +3,7 @@
  * Layout of embed panel loaded in lightbox
  */
 
-$title =  elgg_view_title(elgg_echo('embed:media'));
+$title = elgg_view_title(elgg_echo('embed:media'));
 
 $selected = elgg_get_config('embed_tab');
 if (!$selected) {
