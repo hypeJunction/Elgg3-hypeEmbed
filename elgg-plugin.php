@@ -72,7 +72,7 @@ return [
 			'embed/' => \Elgg\Project\Paths::sanitize(elgg_get_config('dataroot') . 'embed/'),
 		],
 	],
-	'hooks' => [
+	'events' => [
 		'register' => [
 			'menu:embed' => [
 				\hypeJunction\Embed\EmbedMenu::class => [],

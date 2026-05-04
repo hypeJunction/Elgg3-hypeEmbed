@@ -1,7 +1,7 @@
 {
 	"name": "hypejunction/hypeembed",
 	"type": "elgg-plugin",
-	"version": "4.0.0",
+	"version": "5.0.0",
 	"description": "Embed for Elgg",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
@@ -20,8 +20,8 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4",
-		"elgg/elgg": "^4.0",
+		"php": ">=8.2",
+		"elgg/elgg": "^5.0",
 		"composer/installers": "^2.0"
 	},
 	"autoload": {

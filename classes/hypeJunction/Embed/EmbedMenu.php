@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Embed;
 
-use Elgg\Hook;
+use Elgg\Event;
 use ElggMenuItem;
 
 class EmbedMenu {
@@ -14,7 +14,7 @@ class EmbedMenu {
 	 *
 	 * @return ElggMenuItem[]
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $hook) {
 
 		$menu = $hook->getValue();
 

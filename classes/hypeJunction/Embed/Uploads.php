@@ -14,7 +14,7 @@ class Uploads {
 	 *
 	 * @return array
 	 */
-	public static function setIconSizes(\Elgg\Hook $hook) {
+	public static function setIconSizes(\Elgg\Event $hook) {
 
 		$entity_subtype = $hook->getParam('entity_subtype');
 		if ($entity_subtype !== 'embed_file') {
@@ -52,7 +52,7 @@ class Uploads {
 	 *
 	 * @return \ElggIcon
 	 */
-	public static function setIconFile(\Elgg\Hook $hook) {
+	public static function setIconFile(\Elgg\Event $hook) {
 
 		$entity = $hook->getParam('entity');
 		$size = $hook->getParam('size', 'large');

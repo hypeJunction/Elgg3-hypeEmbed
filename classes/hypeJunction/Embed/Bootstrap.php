@@ -15,7 +15,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 	}
 
 	public function init() {
-		\elgg_unregister_plugin_hook_handler('register', 'menu:longtext', 'embed_longtext_menu');
+		\elgg_unregister_event_handler('register', 'menu:longtext', 'embed_longtext_menu');
 
 		\elgg_register_ajax_view('embed/safe/entity');
 
