@@ -42,16 +42,18 @@ The `ckeditor:asset` and `embed:asset` routes both delegate to `embed/asset/view
 | `embed/buttons`    | admin       | Generate HTML button shortcode       |
 | `embed/code`       | admin       | Generate HTML code shortcode         |
 
-## Hook Handlers
+## Event Handlers (Elgg 5.x)
 
-| Hook                 | Type     | Handler                                  | Purpose                                     |
-|----------------------|----------|------------------------------------------|---------------------------------------------|
-| `register`           | `menu:embed`        | `EmbedMenu`               | Registers embed toolbar menu items          |
-| `register`           | `menu:embed:entity` | `EntityEmbedMenu`         | Registers per-entity embed menu items       |
-| `entity:icon:sizes`  | `object`            | `Uploads::setIconSizes`   | Custom icon sizes for embed_file objects    |
-| `entity:icon:file`   | `object`            | `Uploads::setIconFile`    | Resolves thumbnail path for embed_file      |
-| `layout`             | `page`              | `Views::filterLightboxLayout` | Switches layout to embed_lightbox when `?embed_lightbox=1` |
-| `shell`              | `page`              | `Views::filterLightboxShell`  | Switches shell to embed_lightbox when `?embed_lightbox=1`  |
+| Event                | Type                | Handler                               | Purpose                                     |
+|----------------------|---------------------|---------------------------------------|---------------------------------------------|
+| `register`           | `menu:embed`        | `EmbedMenu`                           | Registers embed toolbar menu items          |
+| `register`           | `menu:embed:entity` | `EntityEmbedMenu`                     | Registers per-entity embed menu items       |
+| `entity:icon:sizes`  | `object`            | `Uploads::setIconSizes`               | Custom icon sizes for embed_file objects    |
+| `entity:icon:file`   | `object`            | `Uploads::setIconFile`                | Resolves thumbnail path for embed_file      |
+| `layout`             | `page`              | `Views::filterLightboxLayout`         | Switches layout to embed_lightbox when `?embed_lightbox=1` |
+| `shell`              | `page`              | `Views::filterLightboxShell`          | Switches shell to embed_lightbox when `?embed_lightbox=1`  |
+
+All handlers use `\Elgg\Event` type hint (Elgg 5.x unified events). Registered under the `'events'` key in `elgg-plugin.php`.
 
 ## Bootstrap
 
@@ -83,4 +85,11 @@ Static assets (JS/CSS) are served via simplecache through the `embed/` view name
 
 ## Data Migration Notes
 
-No schema changes required for 3.x → 4.x migration. No `serialize()`-stored data present — metadata is stored as plain strings/integers.
+No schema changes required for 4.x → 5.x migration. No private settings used — the plugin stores all data as entity metadata. No `Elgg\Upgrade\Batch` script needed.
+
+## Elgg Version History
+
+- **2.x** → initial release, procedural style
+- **3.x** → declarative elgg-plugin.php, PSR-4 autoloading
+- **4.x** → Bootstrap class, manifest.xml removed, hooks system
+- **5.x** → hooks renamed to events (`\Elgg\Event`), PHP 8.2+

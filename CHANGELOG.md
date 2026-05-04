@@ -1,3 +1,21 @@
+<a name="5.0.0"></a>
+# [5.0.0] (2026-05-04)
+
+### Breaking Changes
+
+* Requires Elgg 5.x, PHP 8.2+
+* `'hooks'` key renamed to `'events'` in `elgg-plugin.php`
+* All handler signatures changed from `\Elgg\Hook` to `\Elgg\Event`
+* `elgg_unregister_plugin_hook_handler()` replaced with `elgg_unregister_event_handler()`
+
+### Migration
+
+* `composer.json` updated: `elgg/elgg ^5.0`, `php >=8.2`, version `5.0.0`
+* Docker infra updated: `php:8.2-apache`, `mysql:8.0`, Playwright `v1.59.1`
+* Tests adapted: `elgg_trigger_plugin_hook()` → `elgg_trigger_event_results()`,
+  `elgg_get_session()` → `_elgg_services()->session_manager`
+* No data migration required — no private settings in use
+
 <a name="4.0.0"></a>
 # [4.0.0] (2026-04-15)
 
