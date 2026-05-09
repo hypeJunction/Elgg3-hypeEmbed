@@ -1,60 +1,55 @@
-define(function (require) {
+import elgg from 'elgg';
+import $ from 'jquery';
+import embed from 'elgg/embed';
+import lightbox from 'elgg/lightbox';
+import Ajax from 'elgg/Ajax';
+import {trigger} from 'elgg/events';
 
-	var elgg = require('elgg');
-	var $ = require('jquery');
+$(document).off('submit', '.elgg-form-embed-file-upload').on('submit', '.elgg-form-embed-file-upload', function (e) {
+	e.preventDefault();
 
-	var embed = require('elgg/embed');
-	var lightbox = require('elgg/lightbox');
+	var $elem = $(this);
 
-	var Ajax = require('elgg/Ajax');
+	var textAreaId = embed.textAreaId;
+	var textArea = $('#' + textAreaId);
 
-	$(document).off('submit', '.elgg-form-embed-file-upload').on('submit', '.elgg-form-embed-file-upload', function (e) {
-		e.preventDefault();
+	var value = textArea.val();
+	var result = textArea.val();
 
-		var $elem = $(this);
+	var ajax = new Ajax();
+	ajax.action($elem.attr('action'), {
+		data: ajax.objectify($elem),
+		beforeSend: function() {
+			$elem.find('[type="submit"]').prop('disabled', true);
+		}
+	}).done(function (content) {
+		textArea.focus();
+		if (!elgg.isNullOrUndefined(textArea.prop('selectionStart'))) {
+			var cursorPos = textArea.prop('selectionStart');
+			var textBefore = value.substring(0, cursorPos);
+			var textAfter = value.substring(cursorPos, value.length);
+			result = textBefore + content + textAfter;
+		} else if (document.selection) {
+			// IE compatibility
+			var sel = document.selection.createRange();
+			sel.text = content;
+			result = textArea.val();
+		}
 
-		var textAreaId = embed.textAreaId;
-		var textArea = $('#' + textAreaId);
+		// See the ckeditor plugin for an example of this hook
+		result = trigger('embed', 'editor', {
+			textAreaId: textAreaId,
+			content: content,
+			value: value,
+			event: e
+		}, result);
+		if (result || result === '') {
+			textArea.val(result);
+		}
 
-		var value = textArea.val();
-		var result = textArea.val();
-
-		var ajax = new Ajax();
-		ajax.action($elem.attr('action'), {
-			data: ajax.objectify($elem),
-			beforeSend: function() {
-				$elem.find('[type="submit"]').prop('disabled', true);
-			}
-		}).done(function (content) {
-			textArea.focus();
-			if (!elgg.isNullOrUndefined(textArea.prop('selectionStart'))) {
-				var cursorPos = textArea.prop('selectionStart');
-				var textBefore = value.substring(0, cursorPos);
-				var textAfter = value.substring(cursorPos, value.length);
-				result = textBefore + content + textAfter;
-			} else if (document.selection) {
-				// IE compatibility
-				var sel = document.selection.createRange();
-				sel.text = content;
-				result = textArea.val();
-			}
-
-			// See the ckeditor plugin for an example of this hook
-			result = elgg.trigger_hook('embed', 'editor', {
-				textAreaId: textAreaId,
-				content: content,
-				value: value,
-				event: e
-			}, result);
-			if (result || result === '') {
-				textArea.val(result);
-			}
-
-			lightbox.close();
-		}).fail(function() {
-			lightbox.close();
-		});
-
+		lightbox.close();
+	}).fail(function() {
+		lightbox.close();
 	});
 
 });
