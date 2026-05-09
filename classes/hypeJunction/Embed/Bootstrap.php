@@ -28,6 +28,8 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 * @return void
 	 */
 	public function init() {
+		\elgg_register_event_handler('seeds', 'database', [Seeder::class, 'addSeed']);
+
 		\elgg_unregister_event_handler('register', 'menu:longtext', 'embed_longtext_menu');
 
 		\elgg_register_ajax_view('embed/safe/entity');
