@@ -1,16 +1,34 @@
+:root {
+	--embed-color-border: #dcdcdc;
+	--embed-color-border-light: #eee;
+	--embed-color-bg-alt: #fafafa;
+	--embed-color-bg-hover: #f4f4f4;
+	--embed-color-overlay: rgba(0, 0, 0, 0.1);
+	--embed-font-size-sm: 12px;
+	--embed-font-size-menu: 0.85rem;
+	--embed-spacing-gallery: 10px;
+	--embed-spacing-toolbar-pad: 4px 8px;
+	--embed-border-radius: 3px;
+	--embed-z-index-popup: 1201;
+	--embed-max-width-popup: 800px;
+	--embed-max-height-popup: 400px;
+	--embed-max-width-gallery-item: 300px;
+	--embed-max-height-gallery-img: 100px;
+}
+
 .embed-asset-gallery {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 10px auto;
+	margin: var(--embed-spacing-gallery) auto;
 }
 
 .embed-asset-gallery > li {
-	max-width: 300px;
+	max-width: var(--embed-max-width-gallery-item);
 }
 
 .embed-asset-gallery img {
 	max-width: 100%;
-	max-height: 100px;
+	max-height: var(--embed-max-height-gallery-img);
 }
 
 .ebmed-code-wrapper > * {
@@ -18,7 +36,7 @@
 }
 
 .elgg-menu-longtext > li > a {
-	font-size: 12px;
+	font-size: var(--embed-font-size-sm);
 }
 
 .elgg-field-label + .elgg-field-input .elgg-menu-longtext-container {
@@ -35,7 +53,7 @@
 }
 
 .elgg-menu-embed-entity > li > a {
-	font-size: 0.85rem;
+	font-size: var(--embed-font-size-menu);
 	font-weight: bold;
 	padding: 0.25rem;
 }
@@ -47,9 +65,9 @@
 
 /* Embed toolbar below longtext inputs */
 .embed-toolbar {
-	border: 1px solid #dcdcdc;
+	border: 1px solid var(--embed-color-border);
 	margin-top: -2px;
-	border-radius: 0 0 3px 3px;
+	border-radius: 0 0 var(--embed-border-radius) var(--embed-border-radius);
 	display: flex;
 }
 
@@ -59,16 +77,16 @@
 }
 
 .embed-toolbar .elgg-menu-embed > li > a {
-	padding: 4px 8px;
+	padding: var(--embed-spacing-toolbar-pad);
 	display: inline-block;
 	color: inherit;
-	font-size: 12px;
+	font-size: var(--embed-font-size-sm);
 	font-weight: 500;
 }
 
 .embed-toolbar .elgg-menu-embed > li:hover > a,
 .embed-toolbar .elgg-menu-embed > li.elgg-state-active > a {
-	background: rgba(0, 0, 0, 0.1);
+	background: var(--embed-color-overlay);
 }
 
 /* Hide the default longtext menu - toolbar replaces it */
@@ -85,10 +103,10 @@
 
 .embed-toolbar-popup {
 	position: absolute;
-	z-index: 1201;
-	max-width: 800px;
+	z-index: var(--embed-z-index-popup);
+	max-width: var(--embed-max-width-popup);
 	width: calc(100vw - 2rem);
-	max-height: 400px;
+	max-height: var(--embed-max-height-popup);
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 0;
@@ -103,7 +121,7 @@
 }
 
 .embed-wrapper {
-	font-size: 12px;
+	font-size: var(--embed-font-size-sm);
 	width: 100%;
 }
 
@@ -116,25 +134,25 @@
 }
 
 .elgg-list.embed-list {
-	border-top: 1px solid #eee;
+	border-top: 1px solid var(--embed-color-border-light);
 }
 
 .elgg-list.embed-list > li {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid var(--embed-color-border-light);
 	padding: 0;
 }
 
 .elgg-list.embed-list > li:nth-child(even) {
-	background: #fafafa;
+	background: var(--embed-color-bg-alt);
 }
 
 .elgg-list.embed-list > li:hover {
-	background: #f4f4f4;
+	background: var(--embed-color-bg-hover);
 }
 
 .elgg-module-embed .elgg-head {
 	padding: 8px;
-	border-bottom: 1px solid #dcdcdc;
+	border-bottom: 1px solid var(--embed-color-border);
 }
 
 .elgg-module-embed .elgg-body {
