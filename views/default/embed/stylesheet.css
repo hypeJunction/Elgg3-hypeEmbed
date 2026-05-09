@@ -41,7 +41,7 @@
 }
 
 .elgg-module .embed-list > li.embed-list-item {
-	border: 1px solid $(border-color-soft);
+	border: 1px solid var(--elgg-border-color-soft);
 	margin-bottom: 0.5rem;
 }
 
