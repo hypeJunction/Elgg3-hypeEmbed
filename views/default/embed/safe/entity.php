@@ -51,4 +51,4 @@ switch ($format) {
 		break;
 }
 
-echo elgg_trigger_plugin_hook('prepare:entity', 'embed', $vars, $output);
+echo elgg_trigger_event_results('prepare:entity', 'embed', $vars, $output);

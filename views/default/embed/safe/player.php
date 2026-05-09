@@ -22,4 +22,4 @@ if (elgg()->has('shortcodes')) {
 	]);
 }
 
-echo elgg_trigger_plugin_hook('prepare:player', 'embed', $vars, $output);
+echo elgg_trigger_event_results('prepare:player', 'embed', $vars, $output);

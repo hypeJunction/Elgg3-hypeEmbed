@@ -41,4 +41,4 @@ if (!$id) {
 </div>
 <?php
 
-elgg_require_js('embed/toolbar');
+elgg_import_esm('embed/toolbar');

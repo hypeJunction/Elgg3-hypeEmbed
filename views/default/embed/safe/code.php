@@ -17,4 +17,4 @@ $attrs = [
 
 $output = $svc->generate('code', $attrs);
 
-echo elgg_trigger_plugin_hook('prepare:code', 'embed', $vars, $output);
+echo elgg_trigger_event_results('prepare:code', 'embed', $vars, $output);
