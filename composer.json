@@ -1,7 +1,6 @@
 {
     "name": "hypejunction/hypeembed",
     "type": "elgg-plugin",
-    "version": "7.0.0",
     "description": "Embed for Elgg",
     "homepage": "https://github.com/hypeJunction/Elgg3-hypeEmbed",
     "keywords": [
