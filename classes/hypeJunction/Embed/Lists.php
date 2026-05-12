@@ -16,7 +16,9 @@ class Lists {
 	 * @param array  $params Hook params
 	 * @return array
 	 */
-	public static function addFileSimpletypeOptions($hook, $type, $return, $params) {
+	public static function addFileSimpletypeOptions(\Elgg\Event $event) {
+		$return = $event->getValue();
+		$params = $event->getParams();
 
 		$filter = elgg_extract('filter', $params);
 		list($prefix, $simpletype) = explode(':', $filter, 2);
