@@ -62,4 +62,22 @@ class Seeder extends Seed {
 		$seeds[] = self::class;
 		return $seeds;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public static function getType(): string {
+		return 'embed_code';
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getCountOptions(): array {
+		return [
+			'type' => 'object',
+			'subtype' => 'embed_code',
+		];
+	}
+
 }
