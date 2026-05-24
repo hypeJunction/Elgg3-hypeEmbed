@@ -10,10 +10,7 @@ class Lists {
 	/**
 	 * Add file simpletype filter options
 	 *
-	 * @param string $hook   "filter_options"
-	 * @param string $type   "object"
-	 * @param array  $return Options
-	 * @param array  $params Hook params
+	 * @param \Elgg\Event $event "filter_options","object" event
 	 * @return array
 	 */
 	public static function addFileSimpletypeOptions(\Elgg\Event $event) {
