@@ -17,13 +17,13 @@ class LongtextMenu {
 	 */
 	public function __invoke(Hook $hook) {
 
-		if (!elgg_is_logged_in()) {
+		if (!\elgg_is_logged_in()) {
 			return null;
 		}
 
 		$items = $hook->getValue();
 
-		if (elgg_get_context() == 'embed') {
+		if (\elgg_get_context() == 'embed') {
 			return null;
 		}
 
@@ -35,7 +35,7 @@ class LongtextMenu {
 		$items[] = ElggMenuItem::factory([
 			'name' => 'embed',
 			'href' => false,
-			'text' => elgg_echo('embed:media'),
+			'text' => \elgg_echo('embed:media'),
 			'priority' => 10,
 			'child_menu' => [
 				'display' => 'dropdown',
@@ -62,16 +62,16 @@ class LongtextMenu {
 
 			$url = "embed/{$item->getName()}";
 
-			$page_owner = elgg_get_page_owner_entity();
+			$page_owner = \elgg_get_page_owner_entity();
 			if ($page_owner instanceof \ElggGroup && $page_owner->isMember()) {
-				$url = elgg_http_add_url_query_elements($url, [
+				$url = \elgg_http_add_url_query_elements($url, [
 					'container_guid' => $page_owner->guid,
 				]);
 			}
 
 			$item->setHref('javascript:');
 			$item->{'data-colorbox-opts'} = json_encode([
-				'href' => elgg_normalize_url($url),
+				'href' => \elgg_normalize_url($url),
 				'width' => '800px',
 			]);
 

@@ -26,7 +26,7 @@ class PostCollection extends Collection {
 	 * @return string
 	 */
 	public function getDisplayName() {
-		return elgg_echo("collection:object:all:embed");
+		return \elgg_echo("collection:object:all:embed");
 	}
 
 	/**
@@ -84,7 +84,7 @@ class PostCollection extends Collection {
 	 */
 	public function getListOptions(array $options = []) {
 		return array_merge($options, [
-			'no_results' => elgg_echo('embed:tab:posts:empty'),
+			'no_results' => \elgg_echo('embed:tab:posts:empty'),
 			'item_view' => 'embed/lists/item',
 			'item_class' => 'embed-list-item',
 			'list_class' => 'embed-list',
@@ -98,7 +98,7 @@ class PostCollection extends Collection {
 	 * @return string
 	 */
 	public function getURL() {
-		return elgg_generate_url($this->getId(), [
+		return \elgg_generate_url($this->getId(), [
 			'guid' => $this->target ? $this->target->guid : '',
 		]);
 	}

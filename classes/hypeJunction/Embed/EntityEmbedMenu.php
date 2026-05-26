@@ -24,7 +24,7 @@ class EntityEmbedMenu {
 		$menu[] = \ElggMenuItem::factory([
 			'name' => 'embed:card',
 			'class' => 'embed-insert-async',
-			'text' => elgg_echo('embed:entity:card'),
+			'text' => \elgg_echo('embed:entity:card'),
 			'href' => 'javascript:',
 			'data-guid' => $entity->guid,
 			'data-view' => 'embed/safe/entity',
@@ -35,7 +35,7 @@ class EntityEmbedMenu {
 			$menu[] = \ElggMenuItem::factory([
 				'name' => 'embed:thumb',
 				'class' => 'embed-insert-async',
-				'text' => elgg_echo('embed:entity:thumbnail'),
+				'text' => \elgg_echo('embed:entity:thumbnail'),
 				'href' => 'javascript:',
 				'data-guid' => $entity->guid,
 				'data-view' => 'embed/safe/entity',
@@ -47,7 +47,7 @@ class EntityEmbedMenu {
 			$menu[] = \ElggMenuItem::factory([
 				'name' => 'embed:icon',
 				'class' => 'embed-insert-async',
-				'text' => elgg_echo('embed:entity:icon'),
+				'text' => \elgg_echo('embed:entity:icon'),
 				'href' => 'javascript:',
 				'data-guid' => $entity->guid,
 				'data-view' => 'embed/safe/entity',
@@ -59,11 +59,11 @@ class EntityEmbedMenu {
 			$mime = $entity->getMimeType();
 			$base_type = substr($mime, 0, strpos($mime, '/'));
 
-			if (elgg_view_exists("file/specialcontent/$mime") || elgg_view_exists("file/specialcontent/$base_type/default")) {
+			if (\elgg_view_exists("file/specialcontent/$mime") || \elgg_view_exists("file/specialcontent/$base_type/default")) {
 				$menu[] = \ElggMenuItem::factory([
 					'name' => 'embed:player',
 					'class' => 'embed-insert-async',
-					'text' => elgg_echo('embed:entity:player'),
+					'text' => \elgg_echo('embed:entity:player'),
 					'href' => 'javascript:',
 					'data-guid' => $entity->guid,
 					'data-view' => 'embed/safe/entity',

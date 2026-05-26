@@ -24,7 +24,7 @@ class FileCollection extends Collection {
 	 * @return string
 	 */
 	public function getDisplayName() {
-		return elgg_echo("collection:object:file");
+		return \elgg_echo("collection:object:file");
 	}
 
 	/**
@@ -80,7 +80,7 @@ class FileCollection extends Collection {
 	 */
 	public function getListOptions(array $options = []) {
 		return array_merge($options, [
-			'no_results' => elgg_echo('embed:tab:file:empty'),
+			'no_results' => \elgg_echo('embed:tab:file:empty'),
 			'item_view' => 'embed/lists/item',
 			'item_class' => 'embed-list-item',
 			'list_class' => 'embed-list',
@@ -94,7 +94,7 @@ class FileCollection extends Collection {
 	 * @return string
 	 */
 	public function getURL() {
-		return elgg_generate_url($this->getId(), [
+		return \elgg_generate_url($this->getId(), [
 			'guid' => $this->target ? $this->target->guid : '',
 		]);
 	}

@@ -20,7 +20,7 @@ class EmbedMenu {
 
 		$menu[] = ElggMenuItem::factory([
 			'name' => 'posts',
-			'text' => elgg_echo('embed:posts'),
+			'text' => \elgg_echo('embed:posts'),
 			'priority' => 300,
 			'data' => [
 				'view' => 'embed/tab/posts',
@@ -29,17 +29,17 @@ class EmbedMenu {
 
 		$menu[] = ElggMenuItem::factory([
 			'name' => 'player',
-			'text' => elgg_echo('embed:player'),
+			'text' => \elgg_echo('embed:player'),
 			'priority' => 500,
 			'data' => [
 				'view' => 'embed/tab/player',
 			],
 		]);
 
-		if (elgg_is_admin_logged_in()) {
+		if (\elgg_is_admin_logged_in()) {
 			$menu[] = ElggMenuItem::factory([
 				'name' => 'assets',
-				'text' => elgg_echo('embed:assets'),
+				'text' => \elgg_echo('embed:assets'),
 				'priority' => 900,
 				'data' => [
 					'view' => 'embed/tab/assets',
@@ -48,7 +48,7 @@ class EmbedMenu {
 
 			$menu[] = ElggMenuItem::factory([
 				'name' => 'buttons',
-				'text' => elgg_echo('embed:buttons'),
+				'text' => \elgg_echo('embed:buttons'),
 				'priority' => 950,
 				'data' => [
 					'view' => 'embed/tab/buttons',
@@ -57,7 +57,7 @@ class EmbedMenu {
 
 			$menu[] = ElggMenuItem::factory([
 				'name' => 'code',
-				'text' => elgg_echo('embed:code'),
+				'text' => \elgg_echo('embed:code'),
 				'priority' => 950,
 				'data' => [
 					'view' => 'embed/tab/code',
@@ -65,7 +65,7 @@ class EmbedMenu {
 			]);
 		}
 
-		$page_owner = elgg_get_page_owner_entity();
+		$page_owner = \elgg_get_page_owner_entity();
 		$id = $hook->getParam('textarea_id');
 
 		foreach ($menu as $item) {
@@ -82,13 +82,13 @@ class EmbedMenu {
 			$url = "embed/{$item->getName()}";
 
 			if ($page_owner instanceof \ElggGroup && $page_owner->isMember()) {
-				$url = elgg_http_add_url_query_elements($url, [
+				$url = \elgg_http_add_url_query_elements($url, [
 					'container_guid' => $page_owner->guid,
 				]);
 			}
 
 			$item->setHref('javascript:');
-			$item->{'data-href'} = elgg_normalize_url($url);
+			$item->{'data-href'} = \elgg_normalize_url($url);
 
 			if ($id) {
 				$item->rel = "embed-lightbox-{$id}";

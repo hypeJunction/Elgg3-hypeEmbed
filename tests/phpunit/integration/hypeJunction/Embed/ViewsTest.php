@@ -17,7 +17,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedSafeButtonViewRenders(): void {
-        $output = elgg_view('embed/safe/button', [
+        $output = \elgg_view('embed/safe/button', [
             'text' => 'Click me',
             'url' => 'https://example.com',
             'type' => 'action',
@@ -31,7 +31,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedSafeCodeViewRenders(): void {
-        $output = elgg_view('embed/safe/code', [
+        $output = \elgg_view('embed/safe/code', [
             'user_guid' => 1,
             'token' => 'abc123',
         ]);
@@ -42,7 +42,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedSafePlayerViewRenders(): void {
-        $output = elgg_view('embed/safe/player', [
+        $output = \elgg_view('embed/safe/player', [
             'url' => 'https://example.com/video.mp4',
         ]);
         $this->assertIsString($output);
@@ -52,7 +52,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedToolbarViewRenders(): void {
-        $output = elgg_view('embed/toolbar', []);
+        $output = \elgg_view('embed/toolbar', []);
         $this->assertIsString($output);
     }
 
@@ -60,7 +60,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedTabFileViewRenders(): void {
-        $output = elgg_view('embed/tab/file', []);
+        $output = \elgg_view('embed/tab/file', []);
         $this->assertIsString($output);
     }
 
@@ -68,7 +68,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedTabPlayerViewRenders(): void {
-        $output = elgg_view('embed/tab/player', []);
+        $output = \elgg_view('embed/tab/player', []);
         $this->assertIsString($output);
     }
 
@@ -76,7 +76,7 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedTabPostsViewRenders(): void {
-        $output = elgg_view('embed/tab/posts', []);
+        $output = \elgg_view('embed/tab/posts', []);
         $this->assertIsString($output);
     }
 
@@ -84,55 +84,55 @@ class ViewsTest extends IntegrationTestCase {
      * @return void
      */
     public function testFormsEmbedButtonsExists(): void {
-        $this->assertTrue(elgg_view_exists('forms/embed/buttons'));
+        $this->assertTrue(\elgg_view_exists('forms/embed/buttons'));
     }
 
     /**
      * @return void
      */
     public function testFormsEmbedCodeExists(): void {
-        $this->assertTrue(elgg_view_exists('forms/embed/code'));
+        $this->assertTrue(\elgg_view_exists('forms/embed/code'));
     }
 
     /**
      * @return void
      */
     public function testFormsEmbedPlayerExists(): void {
-        $this->assertTrue(elgg_view_exists('forms/embed/player'));
+        $this->assertTrue(\elgg_view_exists('forms/embed/player'));
     }
 
     /**
      * @return void
      */
     public function testShortcodeButtonViewExists(): void {
-        $this->assertTrue(elgg_view_exists('shortcodes/button'));
+        $this->assertTrue(\elgg_view_exists('shortcodes/button'));
     }
 
     /**
      * @return void
      */
     public function testShortcodeCodeViewExists(): void {
-        $this->assertTrue(elgg_view_exists('shortcodes/code'));
+        $this->assertTrue(\elgg_view_exists('shortcodes/code'));
     }
 
     /**
      * @return void
      */
     public function testShortcodeEmbedViewExists(): void {
-        $this->assertTrue(elgg_view_exists('shortcodes/embed'));
+        $this->assertTrue(\elgg_view_exists('shortcodes/embed'));
     }
 
     /**
      * @return void
      */
     public function testEmbedLightboxPageViewExists(): void {
-        $this->assertTrue(elgg_view_exists('page/embed_lightbox'));
+        $this->assertTrue(\elgg_view_exists('page/embed_lightbox'));
     }
 
     /**
      * @return void
      */
     public function testEmbedLightboxLayoutViewExists(): void {
-        $this->assertTrue(elgg_view_exists('page/layouts/embed_lightbox'));
+        $this->assertTrue(\elgg_view_exists('page/layouts/embed_lightbox'));
     }
 }
