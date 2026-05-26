@@ -25,7 +25,7 @@ class FileTypeSearchField extends SearchField {
 	 */
 	public function getField() {
 
-		$metadata = elgg_get_metadata([
+		$metadata = \elgg_get_metadata([
 			'types' => 'object',
 			'subtypes' => ['file', 'embed_file'],
 			'metadata_names' => 'simpletype',
@@ -40,15 +40,15 @@ class FileTypeSearchField extends SearchField {
 			return null;
 		}
 
-		$options_values = ['' => elgg_echo('sort:object:filter:simpletype:all')];
+		$options_values = ['' => \elgg_echo('sort:object:filter:simpletype:all')];
 
 		foreach ($metadata as $md) {
-			$options_values[$md->value] = elgg_echo("sort:object:filter:simpletype:{$md->value}");
+			$options_values[$md->value] = \elgg_echo("sort:object:filter:simpletype:{$md->value}");
 		}
 
 		return [
 			'#type' => 'select',
-			'#label' => elgg_echo('sort:object:filter:simpletype'),
+			'#label' => \elgg_echo('sort:object:filter:simpletype'),
 			'name' => $this->getName(),
 			'value' => $this->getValue(),
 			'options_values' => $options_values,

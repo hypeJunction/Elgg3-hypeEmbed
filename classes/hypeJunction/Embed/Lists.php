@@ -20,7 +20,7 @@ class Lists {
 		$return = $event->getValue();
 		$params = $event->getParams();
 
-		$filter = elgg_extract('filter', $params);
+		$filter = \elgg_extract('filter', $params);
 		list($prefix, $simpletype) = explode(':', $filter, 2);
 
 		if ($prefix == 'simpletype' && $simpletype != 'all') {

@@ -29,7 +29,7 @@ class FileTypeFilter implements FilterInterface {
 	 */
 	public static function build(\ElggEntity $target = null, array $params = []) {
 
-		$file_type = elgg_extract('file_type', $params);
+		$file_type = \elgg_extract('file_type', $params);
 		if (!$file_type) {
 			return null;
 		}
