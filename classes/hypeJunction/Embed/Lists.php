@@ -16,9 +16,11 @@ class Lists {
 	 * @param array  $params Hook params
 	 * @return array
 	 */
-	public static function addFileSimpletypeOptions($hook, $type, $return, $params) {
+	public static function addFileSimpletypeOptions(\Elgg\Hook $hook) {
+		$return = $hook->getValue();
 
-		$filter = \elgg_extract('filter', $params);
+
+		$filter = $hook->getParam('filter');
 		list($prefix, $simpletype) = explode(':', $filter, 2);
 
 		if ($prefix == 'simpletype' && $simpletype != 'all') {
