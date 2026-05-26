@@ -17,7 +17,7 @@ class EntityClassMappingTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedFileClassIsMapped(): void {
-        $class = elgg_get_entity_class('object', 'embed_file');
+        $class = \elgg_get_entity_class('object', 'embed_file');
         $this->assertEquals(File::class, $class);
     }
 
@@ -25,7 +25,7 @@ class EntityClassMappingTest extends IntegrationTestCase {
      * @return void
      */
     public function testCkeditorFileClassIsMapped(): void {
-        $class = elgg_get_entity_class('object', 'ckeditor_file');
+        $class = \elgg_get_entity_class('object', 'ckeditor_file');
         $this->assertEquals(File::class, $class);
     }
 
@@ -33,7 +33,7 @@ class EntityClassMappingTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedCodeClassIsMapped(): void {
-        $class = elgg_get_entity_class('object', 'embed_code');
+        $class = \elgg_get_entity_class('object', 'embed_code');
         $this->assertEquals(EmbedCode::class, $class);
     }
 

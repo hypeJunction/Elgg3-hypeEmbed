@@ -17,7 +17,7 @@ class HooksTest extends IntegrationTestCase {
      * @return void
      */
     public function testEmbedMenuRegistersBasicItems(): void {
-        $result = elgg_trigger_event_results('register', 'menu:embed', [
+        $result = \elgg_trigger_event_results('register', 'menu:embed', [
             'textarea_id' => 'test_ta',
         ], []);
 
@@ -33,9 +33,9 @@ class HooksTest extends IntegrationTestCase {
     public function testEmbedMenuIncludesAdminItemsForAdmin(): void {
         $admin = $this->createUser();
         $admin->makeAdmin();
-        _elgg_services()->session_manager->setLoggedInUser($admin);
+        \_elgg_services()->session_manager->setLoggedInUser($admin);
 
-        $result = elgg_trigger_event_results('register', 'menu:embed', [
+        $result = \elgg_trigger_event_results('register', 'menu:embed', [
             'textarea_id' => 'test_ta',
         ], []);
 
@@ -47,7 +47,7 @@ class HooksTest extends IntegrationTestCase {
         $this->assertContains('buttons', $names);
         $this->assertContains('code', $names);
 
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
     }
 
     /**
@@ -55,9 +55,9 @@ class HooksTest extends IntegrationTestCase {
      */
     public function testEmbedMenuExcludesAdminItemsForRegularUser(): void {
         $user = $this->createUser();
-        _elgg_services()->session_manager->setLoggedInUser($user);
+        \_elgg_services()->session_manager->setLoggedInUser($user);
 
-        $result = elgg_trigger_event_results('register', 'menu:embed', [
+        $result = \elgg_trigger_event_results('register', 'menu:embed', [
             'textarea_id' => 'test_ta',
         ], []);
 
@@ -69,7 +69,7 @@ class HooksTest extends IntegrationTestCase {
         $this->assertNotContains('buttons', $names);
         $this->assertNotContains('code', $names);
 
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
     }
 
     /**
@@ -83,7 +83,7 @@ class HooksTest extends IntegrationTestCase {
         $file->access_id = ACCESS_PUBLIC;
         $file->save();
 
-        $result = elgg_trigger_event_results('register', 'menu:embed:entity', [
+        $result = \elgg_trigger_event_results('register', 'menu:embed:entity', [
             'entity' => $file,
         ], []);
 
@@ -101,7 +101,7 @@ class HooksTest extends IntegrationTestCase {
      * @return void
      */
     public function testUploadsSetIconSizesForEmbedFile(): void {
-        $result = elgg_trigger_event_results('entity:icon:sizes', 'object', [
+        $result = \elgg_trigger_event_results('entity:icon:sizes', 'object', [
             'entity_subtype' => 'embed_file',
         ], []);
 
@@ -120,7 +120,7 @@ class HooksTest extends IntegrationTestCase {
      */
     public function testUploadsSetIconSizesIgnoresOtherSubtypes(): void {
         $default = ['foo' => ['w' => 1, 'h' => 1]];
-        $result = elgg_trigger_event_results('entity:icon:sizes', 'object', [
+        $result = \elgg_trigger_event_results('entity:icon:sizes', 'object', [
             'entity_subtype' => 'blog',
         ], $default);
 

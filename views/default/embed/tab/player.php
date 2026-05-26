@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Embed;
 
-echo elgg_view_form('embed/player', [
+echo \elgg_view_form('embed/player', [
 	'class' => 'elgg-form-embed-player',
 ], $vars);
 ?>

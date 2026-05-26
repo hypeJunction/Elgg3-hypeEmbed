@@ -38,7 +38,7 @@ class Seeder extends Seed {
 	 * {@inheritdoc}
 	 */
 	public function unseed() {
-		$entities = elgg_get_entities([
+		$entities = \elgg_get_entities([
 			'type' => 'object',
 			'subtype' => 'embed_code',
 			'limit' => false,

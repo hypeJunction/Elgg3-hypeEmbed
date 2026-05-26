@@ -18,7 +18,7 @@ class EntityCrudTest extends IntegrationTestCase {
      */
     public function testEmbedFileCanBeSavedAndLoaded(): void {
         $user = $this->createUser();
-        _elgg_services()->session_manager->setLoggedInUser($user);
+        \_elgg_services()->session_manager->setLoggedInUser($user);
 
         $file = new File();
         $file->owner_guid = $user->guid;
@@ -27,9 +27,9 @@ class EntityCrudTest extends IntegrationTestCase {
         $file->title = 'Test embed file';
         $this->assertNotFalse($file->save());
 
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
 
-        _elgg_services()->entityCache->delete($file->guid);
+        \_elgg_services()->entityCache->delete($file->guid);
         $loaded = get_entity($file->guid);
         $this->assertInstanceOf(File::class, $loaded);
         $this->assertEquals('embed_file', $loaded->getSubtype());
@@ -43,7 +43,7 @@ class EntityCrudTest extends IntegrationTestCase {
      */
     public function testEmbedCodeCanBeSavedWithToken(): void {
         $user = $this->createUser();
-        _elgg_services()->session_manager->setLoggedInUser($user);
+        \_elgg_services()->session_manager->setLoggedInUser($user);
 
         $code = new EmbedCode();
         $code->owner_guid = $user->guid;
@@ -54,14 +54,14 @@ class EntityCrudTest extends IntegrationTestCase {
         $this->assertNotFalse($code->save());
 
         // Keep user logged in so ACCESS_PRIVATE entity is readable
-        _elgg_services()->entityCache->delete($code->guid);
+        \_elgg_services()->entityCache->delete($code->guid);
         $loaded = get_entity($code->guid);
         $this->assertInstanceOf(EmbedCode::class, $loaded);
         $this->assertEquals('embed_code', $loaded->getSubtype());
         $this->assertEquals('test_token_abc', $loaded->token);
         $this->assertEquals(ACCESS_PRIVATE, (int) $loaded->access_id);
 
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
         $code->delete();
     }
 
@@ -72,7 +72,7 @@ class EntityCrudTest extends IntegrationTestCase {
         $owner = $this->createUser();
         $other = $this->createUser();
 
-        _elgg_services()->session_manager->setLoggedInUser($owner);
+        \_elgg_services()->session_manager->setLoggedInUser($owner);
 
         $file = new File();
         $file->owner_guid = $owner->guid;
@@ -80,7 +80,7 @@ class EntityCrudTest extends IntegrationTestCase {
         $file->access_id = ACCESS_PUBLIC;
         $file->save();
 
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
 
         $this->assertTrue($file->canEdit($owner->guid));
         $this->assertFalse($file->canEdit($other->guid));
@@ -93,7 +93,7 @@ class EntityCrudTest extends IntegrationTestCase {
      */
     public function testEmbedFileCanBeDeleted(): void {
         $user = $this->createUser();
-        _elgg_services()->session_manager->setLoggedInUser($user);
+        \_elgg_services()->session_manager->setLoggedInUser($user);
 
         $file = new File();
         $file->owner_guid = $user->guid;
@@ -104,7 +104,7 @@ class EntityCrudTest extends IntegrationTestCase {
 
         // Owner must be logged in to delete
         $this->assertTrue($file->delete());
-        _elgg_services()->session_manager->removeLoggedInUser();
+        \_elgg_services()->session_manager->removeLoggedInUser();
 
         $this->assertEmpty(get_entity($guid));
     }
