@@ -118,4 +118,9 @@ return [
 			'embed/stylesheet.css' => [],
 		],
 	],
+    'cli' => [
+        'commands' => [
+            \hypeJunction\Embed\Cli\DoctorCommand::class,
+        ],
+    ],
 ];
