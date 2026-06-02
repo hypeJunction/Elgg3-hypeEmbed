@@ -21,4 +21,4 @@ $attrs = [
 
 $output = $svc->generate('button', $attrs);
 
-echo elgg_trigger_plugin_hook('prepare:button', 'embed', $vars, $output);
+echo elgg_trigger_event_results('prepare:button', 'embed', $vars, $output);

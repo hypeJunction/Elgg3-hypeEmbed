@@ -10,13 +10,19 @@ class Lists {
 	/**
 	 * Add file simpletype filter options
 	 *
-	 * @param string $hook   "filter_options"
-	 * @param string $type   "object"
-	 * @param array  $return Options
-	 * @param array  $params Hook params
+	 * @param \Elgg\Event $hook   "filter_options" event
+	 * @param string      $type   "object"
+	 * @param array       $return Options
+	 * @param array       $params Event params
 	 * @return array
 	 */
-	public static function addFileSimpletypeOptions($hook, $type, $return, $params) {
+	public static function addFileSimpletypeOptions($hook, $type = null, $return = null, $params = null) {
+
+		if ($hook instanceof \Elgg\Hook || $hook instanceof \Elgg\Event) {
+			$type = $hook->getType();
+			$return = $hook->getValue();
+			$params = $hook->getParams();
+		}
 
 		$filter = \elgg_extract('filter', $params);
 		list($prefix, $simpletype) = explode(':', $filter, 2);
