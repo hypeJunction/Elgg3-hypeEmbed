@@ -5,7 +5,7 @@ $svc = elgg()->shortcodes;
 
 
 $entity = elgg_extract('entity', $vars);
-if (!elgg_instanceof($entity)) {
+if (!($entity instanceof \ElggEntity)) {
 	return;
 }
 

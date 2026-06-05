@@ -8,7 +8,7 @@ echo elgg_format_element('div', [
 	'class' => 'elgg-text-help',
 ], elgg_echo('embed:assets:help', [$embed_asset_path]));
 
-$views = elgg_list_views();
+$views = _elgg_services()->views->listViews('default');
 $images = array_filter($views, function($view) {
 	$extension = pathinfo($view, PATHINFO_EXTENSION);
 	return strpos($view, 'embed/') === 0 && in_array($extension, ['jpg', 'gif', 'png', 'svg']);
