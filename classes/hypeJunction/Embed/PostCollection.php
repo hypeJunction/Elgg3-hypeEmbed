@@ -53,7 +53,7 @@ class PostCollection extends Collection {
 	 * @return string|string[]
 	 */
 	public function getSubtypes() {
-		$subtypes = get_registered_entity_types('object');
+		$subtypes = elgg_entity_types_with_capability('searchable')['object'] ?? [];
 
 		return array_diff($subtypes, ['comment', 'file', 'discussion_reply']);
 	}
