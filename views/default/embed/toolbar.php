@@ -24,7 +24,7 @@ if (!$id) {
 }
 
 ?>
-<div class="embed-toolbar" data-textarea-id="<?= elgg_format_element('', [], $id) ?>">
+<div class="embed-toolbar" data-textarea-id="<?= htmlspecialchars((string) $id, ENT_QUOTES, 'UTF-8') ?>">
 	<?php
 	echo elgg_view_menu('embed', [
 		'sort_by' => 'priority',
