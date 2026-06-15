@@ -29,9 +29,9 @@ class FileTypeSearchField extends SearchField {
 			'types' => 'object',
 			'subtypes' => ['file', 'embed_file'],
 			'metadata_names' => 'simpletype',
-			'group_by' => ['a_table.value'],
+			'group_by' => ['n_table.value'],
 			'wheres' => function(QueryBuilder $qb) {
-				return $qb->compare('a_table.value', '!=', '', ELGG_VALUE_STRING);
+				return $qb->compare('n_table.value', '!=', '', ELGG_VALUE_STRING);
 			},
 			'limit' => 0,
 		]);
