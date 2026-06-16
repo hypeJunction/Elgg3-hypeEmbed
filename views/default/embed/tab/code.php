@@ -8,8 +8,5 @@ echo elgg_format_element('p', [
 echo elgg_view_form('embed/code', [
 	'class' => 'elgg-form-embed-code',
 ], $vars);
-?>
 
-<script>
-	require(['embed/tab/code']);
-</script>
+elgg_import_esm('embed/tab/code');

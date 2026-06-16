@@ -1,4 +1,5 @@
 import elgg from 'elgg';
+import $ from 'jquery';
 import embed from 'elgg/embed';
 import lightbox from 'elgg/lightbox';
 import Ajax from 'elgg/Ajax';

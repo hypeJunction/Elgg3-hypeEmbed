@@ -3,7 +3,5 @@
 echo elgg_view_form('embed/buttons', [
 	'class' => 'elgg-form-embed-buttons',
 ], $vars);
-?>
-<script>
-	require(['embed/tab/buttons']);
-</script>
+
+elgg_import_esm('embed/tab/buttons');

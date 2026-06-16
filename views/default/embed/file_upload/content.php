@@ -11,7 +11,4 @@ echo elgg_view_form('file/upload', [
 	'container_guid' => elgg_get_page_owner_guid(),
 ]);
 
-?>
-<script>
-	require(['embed/file_upload/content']);
-</script>
+elgg_import_esm('embed/file_upload/content');
