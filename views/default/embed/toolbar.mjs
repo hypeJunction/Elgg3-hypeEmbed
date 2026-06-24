@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Ajax from 'elgg/Ajax';
+import embed from 'elgg/embed';
 import 'embed/lists/item';
 import * as popup from 'elgg/popup';
 
@@ -9,6 +10,11 @@ $(document).on('click', '.elgg-menu-embed > li > a', function (e) {
 	var $trigger = $(this);
 	var $toolbar = $trigger.closest('.embed-toolbar');
 	var $target = $toolbar.find('.embed-toolbar-popup');
+
+	// Record which textarea this toolbar targets so the tab modules (which read
+	// embed.textAreaId) insert the chosen content into the right field. The core
+	// elgg/embed module that used to track this was removed in Elgg 7.
+	embed.textAreaId = $toolbar.data('textareaId');
 
 	popup.open($trigger, $target, {
 		'collision': 'fit none',
