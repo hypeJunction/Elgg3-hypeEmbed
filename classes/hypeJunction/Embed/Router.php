@@ -8,19 +8,15 @@ namespace hypeJunction\Embed;
 class Router {
 
 	/**
-	 * Set public pages
+	 * Set public pages.
 	 *
-	 * @param string $hook   "public_pages"
-	 * @param string $type   "walled_garden"
-	 * @param array  $return Public pages
-	 *
+	 * @param \Elgg\Event $event public_pages:walled_garden event
 	 * @return array
 	 */
-	public static function setPublicPages($hook, $type, $return) {
-
+	public static function setPublicPages(\Elgg\Event $event) {
+		$return = $event->getValue();
 		$return[] = 'ckeditor/.*';
 		$return[] = 'embed/.*';
-
 		return $return;
 	}
 }

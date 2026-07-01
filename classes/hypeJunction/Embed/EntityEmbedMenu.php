@@ -21,7 +21,7 @@ class EntityEmbedMenu {
 
 		$entity = $hook->getEntityParam();
 		if (!$entity) {
-			return;
+			return $menu;
 		}
 
 		$menu[] = \ElggMenuItem::factory([

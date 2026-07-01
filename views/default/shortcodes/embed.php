@@ -9,7 +9,7 @@ if ($src) {
 }
 
 $guid = elgg_extract('guid', $vars);
-$entity = get_entity($guid);
+$entity = $guid ? get_entity((int) $guid) : null;
 
 if (!$entity) {
 	return;

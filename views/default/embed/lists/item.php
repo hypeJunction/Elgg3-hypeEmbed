@@ -41,8 +41,6 @@ echo elgg_view('object/elements/summary', [
 	'icon' => $icon,
 	'class' => 'embed-item-summary',
 ]);
-?>
-<script>
-	require(['embed/lists/item']);
-</script>
+
+elgg_import_esm('embed/lists/item');
 

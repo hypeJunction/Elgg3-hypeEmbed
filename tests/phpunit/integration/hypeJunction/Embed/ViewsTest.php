@@ -57,6 +57,42 @@ class ViewsTest extends IntegrationTestCase {
     }
 
     /**
+     * Write-path / render regression: when the toolbar is rendered with a
+     * textarea id, Elgg 7.x fataled on the old `elgg_format_element('', [], $id)`
+     * (empty tag name is invalid in 7.x). This hit EVERY embed-enabled longtext
+     * form but was invisible to GET render gating because the toolbar only
+     * renders for a logged-in user on a non-embed context with an id set.
+     * See bd elgg-migrate-ifpdo and commit 0ef817b.
+     *
+     * @return void
+     */
+    public function testEmbedToolbarEscapesTextareaId(): void {
+        $user = $this->createUser();
+        _elgg_services()->session_manager->setLoggedInUser($user);
+
+        elgg_push_context('default');
+
+        try {
+            $output = elgg_view('embed/toolbar', [
+                'id' => 'ta"><script>',
+                'embeds' => true,
+            ]);
+        } finally {
+            elgg_pop_context();
+            _elgg_services()->session_manager->removeLoggedInUser();
+        }
+
+        $this->assertIsString($output);
+        $this->assertNotEmpty($output);
+        // The id must be HTML-escaped into the attribute, not break out of it.
+        $this->assertStringContainsString(
+            'data-textarea-id="' . htmlspecialchars('ta"><script>', ENT_QUOTES, 'UTF-8') . '"',
+            $output
+        );
+        $this->assertStringNotContainsString('data-textarea-id="ta"><script>', $output);
+    }
+
+    /**
      * @return void
      */
     public function testEmbedTabFileViewRenders(): void {

@@ -1,4 +1,5 @@
 import elgg from 'elgg';
+import $ from 'jquery';
 import embed from 'elgg/embed';
 import lightbox from 'elgg/lightbox';
 import Ajax from 'elgg/Ajax';
@@ -6,7 +7,7 @@ import * as popup from 'elgg/popup';
 
 var ajax = new Ajax();
 
-$(document).on('click', '.embed-insert-async', function (e) {
+$(document).on('submit', '.elgg-form-embed-buttons', function (e) {
 	e.preventDefault();
 
 	var $elem = $(this);
@@ -17,8 +18,8 @@ $(document).on('click', '.embed-insert-async', function (e) {
 	var value = textArea.val();
 	var result = textArea.val();
 
-	ajax.view($elem.data('view'), {
-		data: $elem.data()
+	ajax.action($elem.attr('action'), {
+		data: ajax.objectify($elem)
 	}).done(function (content) {
 		textArea.focus();
 		if (!elgg.isNullOrUndefined(textArea.prop('selectionStart'))) {

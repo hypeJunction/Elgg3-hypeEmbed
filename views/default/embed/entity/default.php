@@ -5,7 +5,7 @@ $entity = elgg_extract('entity', $vars);
 $type = $entity->getType();
 $subtype = $entity->getSubtype();
 
-$subtypes = get_registered_entity_types($type);
+$subtypes = elgg_entity_types_with_capability('searchable')[$type] ?? [];
 if ($subtype && !in_array($subtype, $subtypes)) {
 	return;
 }
