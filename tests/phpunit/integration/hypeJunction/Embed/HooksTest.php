@@ -155,4 +155,52 @@ class HooksTest extends IntegrationTestCase {
         $this->assertEquals('embed_lightbox', $result);
         set_input('embed_lightbox', '');
     }
+
+    /**
+     * Regression for commit 98514f3: EntityEmbedMenu::__invoke early-returned
+     * bare (dropping the menu) when no entity param was present. In Elgg 7 a
+     * register/menu handler must RETURN the array value; a bare `return;` yields
+     * null. Invoke the handler directly (the event bus would mask a null return
+     * by keeping the previous value) and assert the menu array comes back
+     * unchanged.
+     *
+     * @return void
+     */
+    public function testEntityEmbedMenuReturnsUnchangedMenuWhenNoEntity(): void {
+        $menu = [
+            \ElggMenuItem::factory([
+                'name' => 'preexisting',
+                'text' => 'Pre-existing',
+                'href' => false,
+            ]),
+        ];
+
+        $event = new \Elgg\Event(elgg(), 'register', 'menu:embed:entity', $menu, []);
+        $result = (new EntityEmbedMenu())->__invoke($event);
+
+        $this->assertIsArray($result);
+        $this->assertSame($menu, $result);
+    }
+
+    /**
+     * Uploads::setIconFile must return null for any object that is not an
+     * embed_file, leaving the default icon file untouched (keyBehavior; handler
+     * migrated to the \Elgg\Event signature in commit 75f851b).
+     *
+     * @return void
+     */
+    public function testUploadsSetIconFileIgnoresNonEmbedFileSubtype(): void {
+        $object = $this->createObject(['subtype' => 'blog']);
+
+        try {
+            $event = new \Elgg\Event(elgg(), 'entity:icon:file', 'object', null, [
+                'entity' => $object,
+                'size' => 'small',
+            ]);
+
+            $this->assertNull(Uploads::setIconFile($event));
+        } finally {
+            $object->delete();
+        }
+    }
 }
